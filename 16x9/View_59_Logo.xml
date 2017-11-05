@@ -61,14 +61,60 @@
 			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
 		</control>
 	</include>
-	<include name="LogoFixed">
-		<control type="fixedlist" id="59">
-			<include>contents59list</include>
+	<include name="SingleLogoLayout">
+		<control type="image">
+			<top>148</top>
+			<width>2475</width>
+			<height>164</height>
+			<aspectratio aligny="bottom" align="center">keep</aspectratio>
+			<texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+			<visible>!Skin.HasSetting(Enable.Logo.clearart) | [Skin.HasSetting(Enable.Logo.clearart) + String.IsEmpty(ListItem.Art(clearart))]</visible>
 		</control>
-	</include>
-	<include name="LogoWrap">
-		<control type="wraplist" id="59">
-			<include>contents59list</include>
+		<control type="image">
+			<top>315</top>
+			<width>2475</width>
+			<height>164</height>
+			<aspectratio aligny="top" align="center">keep</aspectratio>
+			<texture background="true" flipy="true">$INFO[ListItem.Art(clearlogo)]</texture>
+			<animation effect="fade" start="15" end="15" time="160" tween="cubic" easing="inout" condition="true">Conditional</animation>
+			<visible>!Skin.HasSetting(Enable.Logo.clearart) | [Skin.HasSetting(Enable.Logo.clearart) + String.IsEmpty(ListItem.Art(clearart))]</visible>
+		</control>
+		<control type="image">
+			<top>148</top>
+			<width>2475</width>
+			<height>164</height>
+			<aspectratio aligny="bottom" align="center">keep</aspectratio>
+			<texture background="true">$INFO[ListItem.Art(clearart)]</texture>
+			<visible>Skin.HasSetting(Enable.Logo.clearart)</visible>
+		</control>
+		<control type="image">
+			<top>315</top>
+			<width>2475</width>
+			<height>164</height>
+			<aspectratio aligny="top" align="center">keep</aspectratio>
+			<texture background="true" flipy="true">$INFO[ListItem.Art(clearart)]</texture>
+			<animation effect="fade" start="15" end="15" time="160" tween="cubic" easing="inout" condition="true">Conditional</animation>
+			<visible>Skin.HasSetting(Enable.Logo.clearart)</visible>
+		</control>
+		<control type="group">
+			<visible>String.IsEmpty(ListItem.Art(clearlogo))</visible>
+			<control type="label">
+				<left>0</left>
+				<top>250</top>
+				<width>470</width>
+				<height>30</height>
+				<align>center</align>
+				<font>font14</font>
+				<scroll>true</scroll>
+				<scrollspeed>80</scrollspeed>
+				<textcolor>white</textcolor>
+				<label>[B]$VAR[FloorLabelVar][/B]</label>
+			</control>
+		</control>
+		<control type="group">
+			<left>20</left>
+			<top>300</top>
+			<include condition="Skin.HasSetting(Disable.UnwatchedIcon)">UnwatchedIcon</include>
 		</control>
 	</include>
 	<include name="contents59list">
@@ -90,17 +136,26 @@
 		<scrolltime tween="quadratic" easing="out">300</scrolltime>
 		<visible>Container.Content(tvshows) | Container.Content(movies)</visible>
 		<orientation>horizontal</orientation>
-		<itemlayout width="495" height="450">
+		<itemlayout width="495" height="450" condition="!Skin.HasSetting(Enable.SingleLogo)">
 			<control type="group">
 				<animation effect="fade" start="100" end="0" time="600" condition="System.IdleTime(10) + Skin.HasSetting(Enable.Logo.UnfocusFade)">Conditional</animation>
 				<include>LandscapeLogoLayout</include>
 			</control>
 		</itemlayout>
-		<focusedlayout width="495" height="450">
+		<itemlayout width="2475" height="450" condition="Skin.HasSetting(Enable.SingleLogo)">
+		</itemlayout>
+		<focusedlayout width="495" height="450" condition="!Skin.HasSetting(Enable.SingleLogo)">
 			<control type="group">
 				<animation effect="zoom" center="auto" start="100" end="122" time="480" tween="back" reversible="false">Focus</animation>
 				<animation effect="zoom" center="auto" start="122" end="100" time="160" tween="back" reversible="false">UnFocus</animation>
 				<include>LandscapeLogoLayout</include>
+			</control>
+		</focusedlayout>
+		<focusedlayout width="2475" height="450" condition="Skin.HasSetting(Enable.SingleLogo)">
+			<control type="group">
+				<animation effect="zoom" center="auto" start="100" end="140" time="480" tween="back" reversible="false">Focus</animation>
+				<animation effect="zoom" center="auto" start="140" end="100" time="160" tween="back" reversible="false">UnFocus</animation>
+				<include>SingleLogoLayout</include>
 			</control>
 		</focusedlayout>
 	</include>
@@ -108,12 +163,14 @@
 		<control type="group">
 			<visible>Control.IsVisible(59) + !Window.IsActive(addoninformation)</visible>
 			<include>ViewAnimation</include>
-			<include condition="Skin.HasSetting(HorizontalListNav)">LogoFixed</include>
-			<include condition="!Skin.HasSetting(HorizontalListNav)">LogoWrap</include>
+			<!-- <animation effect="slide" start="0" end="0,60" time="420" tween="cubic" easing="inout" condition="[Skin.HasSetting(noextendedinfomovies) + Container.Content(movies)] | [Skin.HasSetting(noextendedinfotvshows) + Container.Content(tvshows)]">Conditional</animation> -->
+			<control type="fixedlist" id="59">
+				<include>contents59list</include>
+			</control>
 			<control type="scrollbar" id="59060">
-				<left>110</left>
+				<left>220</left>
 				<top>935</top>
-				<width>1680</width>
+				<width>1480</width>
 				<height>5</height>
 				<onup>59</onup>
 				<ondown condition="Integer.IsGreaterOrEqual(Container(59).NumPages,10) + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556])]">615</ondown>

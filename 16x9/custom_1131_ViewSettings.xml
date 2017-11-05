@@ -479,6 +479,14 @@
 						<visible>String.IsEqual(Window(Home).Property(actualViewtype),ShowCase) + System.HasAddon(script.skin.info.service) + [Container.Content(movies) | Container.Content(sets)] + [Skin.HasSetting(showcasemod) | Skin.HasSetting(boxsetmod)]</visible>
 					</control>
 					<!-- Logo -->
+					<control type="radiobutton" id="1567">
+						<include>ButtonCommonValues</include>
+						<label>Single logo</label>
+						<onclick>Skin.ToggleSetting(Enable.SingleLogo)</onclick>
+						<onclick condition="Skin.HasSetting(Enable.SingleLogo)">ReloadSkin()</onclick>
+						<selected>Skin.HasSetting(Enable.SingleLogo)</selected>
+						<visible>String.IsEqual(Window(Home).Property(actualViewtype),Logo)</visible>
+					</control>
 					<control type="radiobutton" id="1560">
 						<include>ButtonCommonValues</include>
 						<label>$LOCALIZE[31156]</label>
