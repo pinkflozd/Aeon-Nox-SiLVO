@@ -178,7 +178,8 @@
 	</variable>
 	<variable name="WeatherBackgroundTypeVar">
 		<value condition="Skin.HasSetting(weatherfanart.multi)">/</value>
-		<value>$INFO[Skin.String(weatherfanart.ext)]</value>
+		<value condition="!String.IsEmpty(Skin.String(weatherfanart.ext))">$INFO[Skin.String(weatherfanart.ext)]</value>
+		<value>.jpg</value>
 	</variable>
 	<variable name="OverlayVar">
 		<value condition="Container.ListItem.IsResumable + !String.IsEmpty(Window(Home).Property(Overlay.Resumable))">overlays/showcase/resumable.png</value>
@@ -607,14 +608,16 @@
 		<value>$INFO[ListItem.Label]</value>
 	</variable>
 	<variable name="FloorSubLabelVar">
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]][/COLOR]</value>
+		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • , • ]$VAR[ItemDurationVar][/COLOR]</value>
 		<value condition="Container.Content(episodes)">[COLOR white]$INFO[ListItem.TvShowTitle][/COLOR]</value>
 		<value condition="Container.Content(addons)">[COLOR white]$INFO[ListItem.AddonSummary][/COLOR]</value>
 		<value condition="Container.Content(musicvideos)">[COLOR white]$INFO[ListItem.Artist][/COLOR]</value>
-		<value condition="ListItem.IsResumable + Container.Content(movies) + !ListItem.IsParentFolder + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
-		<value condition="Container.Content(movies) + !ListItem.IsParentFolder + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,][/COLOR]</value>
-		<value condition="ListItem.IsResumable + Container.Content(movies) + !ListItem.IsParentFolder + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
-		<value condition="Container.Content(movies) + !ListItem.IsParentFolder + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,][/COLOR]</value>
-		<value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !ListItem.IsParentFolder">[COLOR white]$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)][/COLOR] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</value>
+		<value condition="ListItem.IsResumable + !Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="ListItem.IsResumable + Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="Skin.HasSetting(Enable.HourMinuteDuration)">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.Endtime, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<!-- <value condition="[Container.Content(tvshows) | Container.Content(seasons)] + !ListItem.IsParentFolder">[COLOR white]$LOCALIZE[20360]: $INFO[ListItem.Property(TotalEpisodes)][/COLOR] $INFO[ListItem.Property(UnWatchedEpisodes), ($LOCALIZE[16101]: ,)]</value> -->
 	</variable>
 	<variable name="FloorLabel2Var">
 		<value condition="Container.Content(artists)">$INFO[ListItem.Property(Artist_Genre)]</value>
@@ -624,9 +627,9 @@
 		<value>$INFO[ListItem.Label2]</value>
 	</variable>
 	<variable name="RightListSubLabelVar">
-		<value condition="!ListItem.IsParentFolder + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$VAR[DurationMinutesVar,, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="!ListItem.IsParentFolder + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
 		<value condition="!ListItem.IsParentFolder + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
-		<value condition="!ListItem.IsParentFolder + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[DurationMinutesVar,, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="!ListItem.IsParentFolder + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
 		<value condition="!ListItem.IsParentFolder + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
 		<value condition="[Container.Content(tvshows) + !Skin.HasSetting(rightlistalternatetv)]">$INFO[ListItem.RatingAndVotes]</value>
 		<value condition="[Container.Content(tvshows) + Skin.HasSetting(rightlistalternatetv)]">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ,]</value>
@@ -976,6 +979,29 @@
 		<value condition="Skin.HasSetting(coloredflags)">resource://resource.images.studios.coloured/</value>
 		<value>resource://resource.images.studios.white/</value>
 	</variable>
+	<variable name="PathFlagsLanguage">
+		<value>flags/language/default/</value>
+	</variable>
+	<variable name="LanguageFlagsLabelVar">
+		<value condition="String.IsEqual(Skin.String(LanguageFlags),1)">$LOCALIZE[292]</value>
+		<value condition="String.IsEqual(Skin.String(LanguageFlags),2)">$LOCALIZE[287]</value>
+		<value condition="String.IsEqual(Skin.String(LanguageFlags),3)">$LOCALIZE[21475]</value>
+		<value>$LOCALIZE[231]</value>
+	</variable>
+	<variable name="LanguageFlagsOnClickVar">
+		<value condition="String.IsEmpty(Skin.String(LanguageFlags))">Skin.SetString(LanguageFlags,1)</value>
+		<value condition="String.IsEqual(Skin.String(LanguageFlags),1)">Skin.SetString(LanguageFlags,2)</value>
+		<value condition="String.IsEqual(Skin.String(LanguageFlags),2)">Skin.SetString(LanguageFlags,3)</value>
+		<value condition="String.IsEqual(Skin.String(LanguageFlags),3)">Skin.Reset(LanguageFlags)</value>
+	</variable>
+	<variable name="CaseBackPathVar">
+		<value condition="!Skin.HasSetting(useclearcases)">thumbs/boxes/default/back/</value>
+		<value condition="Skin.HasSetting(useclearcases)">thumbs/boxes/clearcases/back/</value>
+	</variable>
+	<variable name="CaseTypePathVar">
+		<value condition="!Skin.HasSetting(useclearcases)">thumbs/boxes/default/</value>
+		<value condition="Skin.HasSetting(useclearcases)">thumbs/boxes/clearcases/</value>
+	</variable>
 	<variable name="GlobalCaseVar">
 		<value condition="String.IsEqual(ListItem.DBTYPE,tvshow) | String.IsEqual(ListItem.DBTYPE,season)">tvseries.png</value>
 		<value condition="ListItem.IsCollection">set.png</value>
@@ -986,14 +1012,6 @@
 		<value condition="String.Contains(ListItem.Filename,webdl) | String.Contains(ListItem.Filename,web-dl) | String.Contains(ListItem.Filename,webtv) | String.Contains(ListItem.Filename,web-tv) | String.Contains(ListItem.Filename,webrip)">webdl.png</value>
 		<value condition="!String.IsEmpty(ListItem.VideoResolution)">$INFO[ListItem.VideoResolution]p.png</value>
 		<value>trailers.png</value>
-	</variable>
-	<variable name="CaseTypePathVar">
-		<value condition="!Skin.HasSetting(useclearcases)">thumbs/boxes/default/</value>
-		<value condition="Skin.HasSetting(useclearcases)">thumbs/boxes/clearcases/</value>
-	</variable>
-	<variable name="CaseBackPathVar">
-		<value condition="!Skin.HasSetting(useclearcases)">thumbs/boxes/default/back/</value>
-		<value condition="Skin.HasSetting(useclearcases)">thumbs/boxes/clearcases/back/</value>
 	</variable>
 	<variable name="HomeNowPlayingThumbVar">
 		<value condition="[VideoPlayer.Content(movies) | VideoPlayer.Content(musicvideos)] + !String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
@@ -1024,8 +1042,8 @@
 		<value condition="[String.IsEqual(ListItem.DBTYPE,artist) + | String.IsEqual(ListItem.DBTYPE,song)] + Control.HasFocus(900171)">$LOCALIZE[21887]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,album) + ControlGroup(90001).HasFocus(50)">$LOCALIZE[182]$INFO[Container(50).NumItems, [COLOR grey3](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,artist) + ControlGroup(90001).HasFocus(50)">$LOCALIZE[21888]$INFO[Container(50).NumItems, [COLOR grey3](,)[/COLOR]]</value>
-		<value condition="Window.IsActive(videos) + ControlGroup(90001).HasFocus(90003)">$LOCALIZE[207]</value>
-		<value condition="Window.IsActive(videos) + ControlGroup(90001).HasFocus(90050) | ControlGroup(90001).HasFocus(50)">$LOCALIZE[206]$INFO[Container(50).NumItems, [COLOR grey2](,)[/COLOR]]</value>
+		<value condition="[Window.IsActive(home) | Window.IsActive(videos)] + ControlGroup(90001).HasFocus(90003)">$LOCALIZE[207]</value>
+		<value condition="[Window.IsActive(home) | Window.IsActive(videos)] + ControlGroup(90001).HasFocus(90050) | ControlGroup(90001).HasFocus(50)">$LOCALIZE[206]$INFO[Container(50).NumItems, [COLOR grey2](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90011)">$LOCALIZE[31111]$INFO[Container(90011).NumItems, [COLOR grey2](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90012)">$INFO[ListItem.Director,$LOCALIZE[31112] ]$INFO[Container(90012).NumItems, [COLOR grey2](,)[/COLOR]]</value>
 		<value condition="String.IsEqual(ListItem.DBTYPE,movie) + ControlGroup(90001).HasFocus(90013)">$INFO[ListItem.Writer,$LOCALIZE[31113] ]$INFO[Container(90013).NumItems, [COLOR grey2](,)[/COLOR]]</value>
@@ -1056,7 +1074,9 @@
 		<value condition="Control.HasFocus(11)">$LOCALIZE[20410]</value>
 		<value condition="Control.HasFocus(7) | Control.HasFocus(5007) + !String.IsEmpty(ListItem.UserRating)">$LOCALIZE[31147]</value>
 		<value condition="Control.HasFocus(7) | Control.HasFocus(5007)">$LOCALIZE[38023]</value>
-		<value condition="Control.HasFocus(10) | Control.HasFocus(5010)">$LOCALIZE[13511]</value>
+		<value condition="Control.HasFocus(10)">$LOCALIZE[13511]</value>
+		<value condition="Control.HasFocus(5010)">$INFO[Control.GetLabel(10)]</value>
+		<value condition="Control.HasFocus(5012) | Control.HasFocus(50012)">$INFO[Control.GetLabel(12)]</value>
 		<value condition="Control.HasFocus(6) | Control.HasFocus(5006)">$LOCALIZE[184]</value>
 		<value condition="Control.HasFocus(208)">$LOCALIZE[31014]</value>
 		<value condition="Control.HasFocus(90003) | [Container(90001).HasNext + !Container(90001).HasPrevious]">$LOCALIZE[31453]</value>

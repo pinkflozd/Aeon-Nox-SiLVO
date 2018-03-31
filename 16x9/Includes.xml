@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<include file="Includes_VideoLyrics.xml" />
 	<include file="Defaults.xml" />
-	<include file="Includes_CommonValues.xml" />
 	<include file="Includes_Animations.xml" />
+	<include file="Includes_Backgrounds.xml" />
+	<include file="Includes_CommonValues.xml" />
 	<include file="Includes_Home.xml" />
 	<include file="Includes_LiveBG.xml" />
 	<include file="Includes_LiveTV.xml" />
+	<include file="Includes_VideoLyrics.xml" />
+	<include file="Includes_ViewSettings.xml" />
 	<include file="Includes_Widgets.xml" />
-	<include file="Includes_Backgrounds.xml" />
+	<include file="script-skinshortcuts-includes.xml" />
+	<include file="Variables.xml" />
+	<include file="Variables_Widgets.xml" />
 	<include file="View_50_List.xml" />
 	<include file="View_51_InfoWall.xml" />
 	<include file="View_52_Landscape.xml" />
@@ -35,13 +39,6 @@
 	<include file="View_602_FanartList.xml" />
 	<include file="View_603_Music_JukeBox.xml" />
 	<include file="View_609_Fullscreen_Wall.xml" />
-	<include file="Variables.xml" />
-	<include file="Variables_Widgets.xml" />
-	<include file="script-skinshortcuts-includes.xml" />
-	<constant name="FanartCrossfadeTime">500</constant>
-	<constant name="IconCrossfadeTime">400</constant>
-	<constant name="MaxDepth">0.30</constant>
-	<constant name="MinDepth">-0.80</constant>
 	<!-- Media Menu -->
 	<include name="SideBladeLeft">
 		<animation effect="slide" start="440,0" end="0,0" time="400" tween="quadratic" easing="out" condition="String.IsEmpty(Window(Home).Property(MediaMenu))">Conditional</animation>
@@ -172,7 +169,7 @@
 		</control>
 		<control type="button" id="2001">
 			<include>ButtonCommonValues</include>
-			<label>$VAR[BackgroundLabelVar,,: ]$LOCALIZE[33068]</label>
+			<label>$LOCALIZE[33068]</label>
 			<onclick>ActivateWindow(1128)</onclick>
 		</control>
 	</include>
@@ -329,9 +326,10 @@
 		<height>1080</height>
 		<onleft>9050</onleft>
 		<onright>ClearProperty(MediaMenu,Home)</onright>
-		<onright condition="!Window.IsActive(SettingsCategory.xml) + !Window.IsActive(profiles)">50</onright>
+		<onright condition="!Window.IsActive(skinsettings) + !Window.IsActive(SettingsCategory.xml) + !Window.IsActive(profiles)">50</onright>
 		<onright condition="Window.IsActive(SettingsCategory.xml)">3</onright>
 		<onright condition="Window.IsActive(profiles)">2</onright>
+		<onright condition="Window.IsActive(skinsettings)">9000</onright>
 		<onup>9050</onup>
 		<ondown condition="Player.HasMedia">9957</ondown>
 		<ondown condition="!Player.HasMedia">9050</ondown>
@@ -366,7 +364,7 @@
 	<include name="MediaMenuPlayerControls">
 		<control type="grouplist" id="9950">
 			<defaultcontrol always="true">9957</defaultcontrol>
-			<top>1023</top>
+			<top>1005</top>
 			<left>-20</left>
 			<height>67</height>
 			<width>440</width>
@@ -811,6 +809,7 @@
 				<param name="PanelID">90017</param>
 				<param name="listVisible" value="!String.IsEmpty(ListItem.SetID)" />
 				<param name="content">videodb://movies/sets/$INFO[ListItem.SetID]</param>
+				<param name="sortby">year</param>
 			</include>
 		</control>
 	</include>

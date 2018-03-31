@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<include name="ShiftPosterThumbs">
 		<control type="image">
@@ -138,6 +138,7 @@
 		<control type="group">
 			<include>ViewAnimation</include>
 			<visible>Control.IsVisible(57) + !Window.IsActive(addoninformation)</visible>
+			<top>-45</top>
 			<control type="fixedlist" id="57">
 				<left>-130</left>
 				<top>300</top>
@@ -283,7 +284,7 @@
 	<include name="GamesShift">
 		<control type="group">
 			<include>ViewAnimation</include>
-			<visible>Control.IsVisible(57) + Window.IsActive(programs)</visible>
+			<visible>Control.IsVisible(57)</visible>
 			<control type="fixedlist" id="57">
 				<left>-130</left>
 				<top>300</top>
