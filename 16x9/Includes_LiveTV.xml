@@ -440,28 +440,27 @@
 							</control>
 							<control type="label">
 								<left>320</left>
-								<width>1000</width>
+								<width>500</width>
 								<height>38</height>
 								<font>font24_bold</font>
 								<textcolor>green</textcolor>
 								<label>$INFO[PVR.ActStreamEncryptionName]</label>
 							</control>
-						</control>
-						<!-- Signal -->
-						<control type="group">
-							<left>1000</left>
-							<width>250</width>
-							<visible>!String.Contains(PVR.ActStreamStatus,TIMESHIFT) + !Skin.HasSetting(infobar_hidesignalinfo)</visible>
 							<control type="label">
-								<left>50</left>
-								<width>250</width>
+								<left>580</left>
+								<width>500</width>
 								<height>38</height>
 								<font>font24_bold</font>
 								<textcolor>grey</textcolor>
-								<label>$INFO[PVR.ActStreamBer,BER: ,]</label>
+								<label>$INFO[PVR.ActStreamProviderName]</label>
 							</control>
+						</control>
+						<!-- Signal -->
+						<control type="group">
+							<left>1250</left>
+							<width>250</width>
+							<visible>!String.Contains(PVR.ActStreamStatus,TIMESHIFT) + !Skin.HasSetting(infobar_hidesignalinfo)</visible>
 							<control type="label">
-								<left>250</left>
 								<width>250</width>
 								<height>38</height>
 								<font>font24_bold</font>
@@ -469,7 +468,7 @@
 								<label>$INFO[PVR.ActStreamSNR,SNR: ,]</label>
 							</control>
 							<control type="label">
-								<left>380</left>
+								<left>130</left>
 								<width>250</width>
 								<height>38</height>
 								<font>font24_bold</font>
