@@ -120,9 +120,12 @@
 		<value condition="String.IsEqual(Skin.String(Viz.Background),4)">$LOCALIZE[31002]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),5)">$ADDON[script.skinshortcuts 32051]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),6)">$ADDON[script.skinshortcuts 32052]</value>
+		<value condition="String.IsEqual(Skin.String(Viz.Background),7)">$LOCALIZE[31020]</value>
 		<value>$LOCALIZE[20445]</value>
 	</variable>
 	<variable name="VizBackgroundVar">
+		<value condition="System.HasAddon(script.artwork.beef) + !String.IsEmpty(Control.GetLabel(4411)) + String.IsEmpty(Player.Art(artist.fanart1)) + String.IsEqual(Skin.String(Viz.Background),7)">$INFO[Control.GetLabel(4411)]</value>
+		<value condition="System.HasAddon(script.artwork.beef) + !String.IsEmpty(Control.GetLabel(4410)) + String.IsEqual(Skin.String(Viz.Background),7)">$INFO[Control.GetLabel(4410)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),2)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
 		<value condition="[![String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),\transparent) | !String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),/transparent)] + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshowTransparent))] | [String.IsEmpty(Window(Visualisation).Property(ArtistSlideshowTransparent))]] + String.IsEqual(Skin.String(Viz.Background),3)">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),4) + !String.IsEmpty(Window(Home).Property(ImageColorFIVE)))">$INFO[Window(Home).Property(ImageFilterFIVE)]</value>
@@ -324,6 +327,12 @@
 	<variable name="OneOrMoreEpisodesVar">
 		<value condition="String.IsEqual(ListItem.Property(TotalEpisodes),1)">$LOCALIZE[20359]</value>
 		<value>$LOCALIZE[20360]</value>
+	</variable>
+	<variable name="NoSpoilerIconVar">
+		<value condition="Container.Content(episodes) + Skin.HasSetting(Hide.IconWithSpoilerPlot) + !system.getbool(videolibrary.showunwatchedplots) + !String.IsEmpty(ListItem.Art(tvshow.landscape))">$INFO[ListItem.Art(tvshow.landscape)]</value>
+		<value condition="Container.Content(episodes) + Skin.HasSetting(Hide.IconWithSpoilerPlot) + !system.getbool(videolibrary.showunwatchedplots) + !String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+		<value condition="Container.Content(episodes) + Skin.HasSetting(Hide.IconWithSpoilerPlot) + !system.getbool(videolibrary.showunwatchedplots) + !String.IsEmpty(Container.Art(tvshow.fanart))">$INFO[Container.Art(tvshow.fanart)]</value>
+		<value>$INFO[ListItem.Icon]</value>
 	</variable>
 	<variable name="VideoPlotVar">
 		<value condition="Container.Content(seasons)">$INFO[Container.ShowPlot]</value>
@@ -960,9 +969,9 @@
 		<value>[COLOR grey]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]][/COLOR]</value>
 	</variable>
 	<variable name="StudioIconVar">
+		<value condition="ListItem.IsCollection">overlays/showcase/set.png</value>
 		<value condition="!String.IsEmpty(ListItem.Studio) + !Skin.HasSetting(coloredflags)">$INFO[ListItem.Studio,resource://resource.images.studios.white/,.png]</value>
 		<value condition="!String.IsEmpty(ListItem.Studio) + Skin.HasSetting(coloredflags)">$INFO[ListItem.Studio,resource://resource.images.studios.coloured/,.png]</value>
-		<value condition="ListItem.IsCollection">overlays/showcase/set.png</value>
 		<value condition="!String.StartsWith(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
 		<value>$INFO[ListItem.Icon,views/list/]</value>
 	</variable>
@@ -2006,6 +2015,14 @@
 	<variable name="ShortcutsDisabledVar">
 		<value condition="String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)">[COLOR invalid]×[/COLOR] </value>
 		<value />
+	</variable>
+	<variable name="ShortcutsDisabledTextColorVar">
+		<value condition="String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)">invalid</value>
+		<value>grey2</value>
+	</variable>
+	<variable name="ShortcutsDisabledFocusedTextColorVar">
+		<value condition="String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)">invalid</value>
+		<value>white</value>
 	</variable>
 	<variable name="ShortcutsRecordingWidgetVar">
 		<value condition="!String.IsEmpty(Container(211).ListItem.Property(widgetLiveTV))">[COLOR green][/COLOR]</value>
