@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-	<!-- Main Menu Includes -->
+	<!-- Horizontal -->
 	<include name="HorizontalSubMenu">
 		<control type="fixedlist" id="9010">
 			<left>210</left>
+			<top>3</top>
 			<width>1500</width>
-			<height>87</height>
+			<height>90</height>
 			<onup>9000</onup>
 			<ondown condition="Control.IsVisible(90020) + !Skin.HasSetting(lowermainmenu)">90020</ondown>
 			<ondown condition="!Control.IsVisible(90020) | Skin.HasSetting(lowermainmenu)">9000</ondown>
@@ -29,9 +30,11 @@
 				<control type="group">
 					<visible>Control.HasFocus(9010)</visible>
 					<control type="image">
+						<top>1</top>
 						<width>300</width>
-						<height>41</height>
+						<height>39</height>
 						<texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
+						<animation effect="slide" end="0,-3" condition="[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]">Conditional</animation>
 					</control>
 					<control type="label">
 						<width>300</width>
@@ -83,7 +86,7 @@
 	</include>
 	<include name="HorizontalMenuSystemBars">
 		<control type="group">
-			<top>424</top>
+			<top>427</top>
 			<control type="group">
 				<animation effect="slide" end="0,338" time="320" tween="cubic" easing="inout" condition="Skin.HasSetting(lowermainmenu)">Conditional</animation>
 				<include>WindowOpenCloseAnimation</include>
@@ -102,7 +105,7 @@
 				<include condition="System.HasAddon(service.library.data.provider)">PlayListStatsList</include>
 				<control type="label">
 					<top>46</top>
-					<width>960</width>
+					<width>1080</width>
 					<height>40</height>
 					<label>$VAR[LibraryStatsVar]</label>
 					<textoffsetx>20</textoffsetx>
@@ -112,9 +115,9 @@
 				</control>
 				<control type="grouplist" id="9020">
 					<visible>!String.IsEmpty(Container(9000).ListItem.Property(InfoLine)) | !Skin.HasSetting(CenteredInfoLine)</visible>
-					<left>980</left>
+					<left>1100</left>
 					<top>46</top>
-					<width>920</width>
+					<width>800</width>
 					<height>41</height>
 					<align>right</align>
 					<orientation>horizontal</orientation>
@@ -123,46 +126,6 @@
 					<onup condition="!Control.IsVisible(90010) + !Control.IsVisible(90020)">9000</onup>
 					<ondown>9000</ondown>
 					<include condition="System.HasAddon(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
-					<control type="button" id="9021">
-						<label></label>
-						<textoffsetx>0</textoffsetx>
-						<width>50</width>
-						<height>41</height>
-						<align>center</align>
-						<font>IconTiny</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<visible>System.HasMediaDVD</visible>
-						<onclick>EjectTray()</onclick>
-						<animation type="Visible">
-							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-						<animation type="Hidden">
-							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-					</control>
-					<control type="button" id="9022">
-						<label></label>
-						<textoffsetx>0</textoffsetx>
-						<width>50</width>
-						<height>41</height>
-						<align>center</align>
-						<font>IconTiny</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<visible>System.HasMediaDVD</visible>
-						<onclick>PlayDVD</onclick>
-						<animation type="Visible">
-							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-						<animation type="Hidden">
-							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-					</control>
 					<control type="label" id="9026">
 						<width>5</width>
 						<height>41</height>
@@ -210,46 +173,6 @@
 					<onup condition="!Control.IsVisible(90010) + !Control.IsVisible(90020)">9000</onup>
 					<ondown>9000</ondown>
 					<include condition="System.HasAddon(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
-					<control type="button" id="9021">
-						<label></label>
-						<textoffsetx>0</textoffsetx>
-						<width>50</width>
-						<height>41</height>
-						<align>center</align>
-						<font>IconTiny</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<visible>System.HasMediaDVD</visible>
-						<onclick>EjectTray()</onclick>
-						<animation type="Visible">
-							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-						<animation type="Hidden">
-							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-					</control>
-					<control type="button" id="9022">
-						<label></label>
-						<textoffsetx>0</textoffsetx>
-						<width>50</width>
-						<height>41</height>
-						<align>center</align>
-						<font>IconTiny</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<visible>System.HasMediaDVD</visible>
-						<onclick>PlayDVD</onclick>
-						<animation type="Visible">
-							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-						<animation type="Hidden">
-							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-					</control>
 					<control type="label" id="9026">
 						<width>5</width>
 						<height>41</height>
@@ -305,20 +228,19 @@
 						<visible>[String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) | String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] + [String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) | String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
 					</control>
 					<control type="image">
-						<height>87</height>
+						<top>3</top>
+						<height>88</height>
 						<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar_white.png</texture>
 						<visible>[!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)] | [!String.IsEmpty(Skin.String(ThemeHomeSystemBarsColor)) + !String.IsEqual(Skin.String(ThemeHomeSystemBarsColor),None)]</visible>
 					</control>
 					<include>HorizontalSubMenu</include>
 				</control>
 				<control type="image">
-					<top>-4</top>
-					<height>230</height>
+					<height>225</height>
 					<texture>homemenu_back.png</texture>
 				</control>
 				<control type="image">
-					<top>-4</top>
-					<height>230</height>
+					<height>225</height>
 					<texture colordiffuse="$VAR[ThemeHomeMenuBarColor]">homemenu_back_white.png</texture>
 					<visible>!String.IsEmpty(Skin.String(ThemeHomeMenuBarColor)) + !String.IsEqual(Skin.String(ThemeHomeMenuBarColor),None)</visible>
 				</control>
@@ -348,6 +270,7 @@
 			</control>
 		</control>
 	</include>
+	<!-- Vertical -->
 	<include name="VerticalMenu">
 		<control type="group">
 			<animation effect="slide" end="-480,0" time="240">WindowClose</animation>
@@ -558,6 +481,7 @@
 			</control>
 		</control>
 	</include>
+	<!-- Layouts -->
 	<include name="MainMenuListContent">
 		<left>-290</left>
 		<top>62</top>
@@ -573,9 +497,9 @@
 		<animation effect="slide" start="0" end="-350,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),3)">Conditional</animation>
 		<animation effect="slide" start="0" end="126,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),icons)">Conditional</animation>
 		<animation effect="slide" start="0" end="0,20" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),icons) + Skin.HasSetting(Disable.IconsMenuLabel)">Conditional</animation>
-		<onup condition="System.HasMediaDVD | Control.IsVisible(9027)">9020</onup>
-		<onup condition="Control.IsVisible(90010) + ![System.HasMediaDVD | Control.IsVisible(9027)]">90010</onup>
-		<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + ![System.HasMediaDVD | Control.IsVisible(9027)] + Skin.HasSetting(lowermainmenu)">90020</onup>
+		<onup condition="Control.IsVisible(9027)">9020</onup>
+		<onup condition="Control.IsVisible(90010) + !Control.IsVisible(9027)">90010</onup>
+		<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + !Control.IsVisible(9027) + Skin.HasSetting(lowermainmenu)">90020</onup>
 		<ondown condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">9001</ondown>
 		<ondown condition="!String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True) + !Skin.HasSetting(lowermainmenu) + Control.IsVisible(90020)">90020</ondown>
 		<onback condition="Skin.HasSetting(Home.Hide) + !Player.Playing">SetFocus(64)</onback>
@@ -710,9 +634,9 @@
 		<height>100</height>
 		<onleft>9000</onleft>
 		<onright>9000</onright>
-		<onup condition="System.HasMediaDVD | Control.IsVisible(9027)">9020</onup>
-		<onup condition="Control.IsVisible(90010) + ![System.HasMediaDVD | Control.IsVisible(9027)]">90010</onup>
-		<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + ![System.HasMediaDVD | Control.IsVisible(9027)] + Skin.HasSetting(lowermainmenu)">90020</onup>
+		<onup condition="Control.IsVisible(9027)">9020</onup>
+		<onup condition="Control.IsVisible(90010) + !Control.IsVisible(9027)">90010</onup>
+		<onup condition="!Control.IsVisible(90010) + Control.IsVisible(90020) + !Control.IsVisible(9027) + Skin.HasSetting(lowermainmenu)">90020</onup>
 		<ondown condition="String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True)">9001</ondown>
 		<ondown condition="!String.IsEqual(Container(9000).ListItem.Property(hasSubmenu),True) + !Skin.HasSetting(lowermainmenu) + Control.IsVisible(90020)">90020</ondown>
 		<onback condition="Skin.HasSetting(Home.Hide) + !Player.Playing">SetFocus(64)</onback>
@@ -763,7 +687,7 @@
 		<onleft>90001</onleft>
 		<onright condition="Control.IsVisible(90010)">90010</onright>
 		<onright condition="!Control.IsVisible(90010) + Control.IsVisible(90020)">90020</onright>
-		<onright condition="!Control.IsVisible(90010) + !Control.IsVisible(90020) + [System.HasMediaDVD | Control.IsVisible(9027)]">9020</onright>
+		<onright condition="!Control.IsVisible(90010) + !Control.IsVisible(90020) + Control.IsVisible(9027)">9020</onright>
 		<onback condition="Skin.HasSetting(Home.Hide) + !Player.Playing">SetFocus(64)</onback>
 		<pagecontrol />
 		<focusposition>3</focusposition>
@@ -803,6 +727,7 @@
 			<include>skinshortcuts-mainmenu</include>
 		</content>
 	</include>
+	<!-- Fixed/Wrap -->
 	<include name="MainMenuListFixed">
 		<control type="fixedlist" id="9000">
 			<include condition="!String.IsEqual(Skin.String(MainMenu.Layout),vertical)">MainMenuListContent</include>
@@ -816,6 +741,7 @@
 			<include condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">VerticalMainMenuListContent</include>
 		</control>
 	</include>
+	<!-- Focus -->
 	<include name="FocusPosition4">
 		<focusposition>4</focusposition>
 	</include>
@@ -843,7 +769,7 @@
 			<font>IconTiny</font>
 			<textcolor>grey</textcolor>
 			<shadowcolor>shadow</shadowcolor>
-			<onclick>SetProperty(CustomSelectSearch,True)</onclick>
+			<onclick>SetProperty(CustomSelectSearch,True,Home)</onclick>
 			<onclick>ActivateWindow(1129)</onclick>
 			<animation type="Visible">
 				<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
@@ -880,7 +806,7 @@
 			<animation effect="slide" end="425,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
 			<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
 			<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
-			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="[!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ControlGroup(90020).HasFocus] | [!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ControlGroup(90010).HasFocus + !String.IsEqual(Container(9000).ListItem.Property(widgetStyle),List) + [String.IsEqual(Container(9000).ListItem.Property(widgetPanelInfo),Enabled)]]">Conditional</animation>
+			<animation effect="fade" start="100" end="0" condition="[!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ControlGroup(90020).HasFocus] | [!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ControlGroup(90010).HasFocus + !String.IsEqual(Container(9000).ListItem.Property(widgetStyle),List) + [String.IsEqual(Container(9000).ListItem.Property(widgetPanelInfo),Enabled)]]">Conditional</animation>
 			<control type="image">
 				<width>1920</width>
 				<height>600</height>
@@ -1122,8 +1048,8 @@
 		<!-- Music Info -->
 		<control type="group">
 			<visible>Player.HasAudio + !Window.IsActive(script-globalsearch.xml)</visible>
-			<animation effect="fade" delay="1500" time="300">Visible</animation>
-			<animation effect="fade" time="300">Hidden</animation>
+			<visible>!Window.Next(musicplaylist) + !Window.Next(visualisation)</visible>
+			<animation effect="fade" time="300">Visible</animation>
 			<animation effect="slide" tween="cubic" time="720" start="0,1080" end="0,0" condition="!Skin.HasSetting(lowermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowOpen</animation>
 			<animation effect="slide" tween="cubic" time="720" end="0,1080" start="0,0" condition="!Skin.HasSetting(lowermainmenu) + !String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowClose</animation>
 			<animation effect="slide" tween="cubic" time="720" start="0,-1080" end="0,0" condition="Skin.HasSetting(lowermainmenu) | String.IsEqual(Skin.String(MainMenu.Layout),vertical)">WindowOpen</animation>
@@ -1132,7 +1058,7 @@
 			<animation effect="slide" end="425,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical)">Conditional</animation>
 			<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
 			<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.IsEqual(Skin.String(MainMenu.Layout),vertical) + String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
-			<animation effect="fade" start="100" end="0" time="200" delay="100" condition="[!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ControlGroup(90020).HasFocus] | [!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ControlGroup(90010).HasFocus + !String.IsEqual(Container(9000).ListItem.Property(widgetStyle),List) + [String.IsEqual(Container(9000).ListItem.Property(widgetPanelInfo),Enabled)]]">Conditional</animation>
+			<animation effect="fade" start="100" end="0" condition="[!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ControlGroup(90020).HasFocus] | [!String.IsEqual(Skin.String(MainMenu.Layout),vertical) + ControlGroup(90010).HasFocus + !String.IsEqual(Container(9000).ListItem.Property(widgetStyle),List) + [String.IsEqual(Container(9000).ListItem.Property(widgetPanelInfo),Enabled)]]">Conditional</animation>
 			<control type="image">
 				<width>1920</width>
 				<height>600</height>
@@ -1157,7 +1083,7 @@
 					<aligny>top</aligny>
 					<aspectratio align="left">keep</aspectratio>
 					<fadetime>300</fadetime>
-					<animation effect="rotate" end="-360" center="auto" time="6000" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
+					<animation effect="rotate" end="-360" center="auto" time="8333" loop="true" reversible="false" condition="!Player.Paused">Conditional</animation>
 					<texture background="true" diffuse="thumbs/boxes/cdart_mask.png">$VAR[PlayerArtworkDiscVar]</texture>
 					<bordersize>30</bordersize>
 				</control>
@@ -1307,6 +1233,7 @@
 			</control>
 		</control>
 	</include>
+	<!-- RSS Feed -->
 	<include name="RSSFeed">
 		<control type="group">
 			<include>WindowOpenCloseAnimation</include>
@@ -1349,6 +1276,7 @@
 				</control>
 				<control type="group">
 					<visible>String.IsEqual(Skin.String(RSS.Position),$LOCALIZE[571])</visible>
+					<top>1</top>
 					<control type="image">
 						<width>100%</width>
 						<texture colordiffuse="$VAR[ThemeHomeSystemBarsColor]">submenu_bar.png</texture>
@@ -1585,46 +1513,6 @@
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle),Extended) + ControlGroup(90010).HasFocus">Conditional</animation>
 					<animation effect="slide" end="-410,0" time="320" tween="cubic" easing="inout" condition="String.Contains(Container(9000).ListItem.Property(widgetStyle.2),Extended) + ControlGroup(90020).HasFocus">Conditional</animation>
 					<include condition="System.HasAddon(script.globalsearch) + !Skin.HasSetting(Disable.SearchButton)">HomeSearchButton</include>
-					<control type="button" id="9021">
-						<label></label>
-						<textoffsetx>0</textoffsetx>
-						<width>50</width>
-						<height>41</height>
-						<align>center</align>
-						<font>IconTiny</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<visible>System.HasMediaDVD</visible>
-						<onclick>EjectTray()</onclick>
-						<animation type="Visible">
-							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-						<animation type="Hidden">
-							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-					</control>
-					<control type="button" id="9022">
-						<label></label>
-						<textoffsetx>0</textoffsetx>
-						<width>50</width>
-						<height>41</height>
-						<align>center</align>
-						<font>IconTiny</font>
-						<textcolor>grey</textcolor>
-						<shadowcolor>shadow</shadowcolor>
-						<visible>System.HasMediaDVD</visible>
-						<onclick>PlayDVD</onclick>
-						<animation type="Visible">
-							<effect type="fade" start="0" end="100" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="50" end="100" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-						<animation type="Hidden">
-							<effect type="fade" start="100" end="0" tween="sine" easing="inout" time="300" />
-							<effect type="zoom" start="100" end="50" center="auto" tween="sine" easing="inout" time="300" />
-						</animation>
-					</control>
 					<control type="label">
 						<width>410</width>
 						<label />

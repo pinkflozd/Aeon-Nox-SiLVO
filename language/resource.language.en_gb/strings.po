@@ -896,12 +896,20 @@ msgctxt "#31219"
 msgid "Language flags"
 msgstr ""
 
+msgctxt "#31220"
+msgid "RSS Feed"
+msgstr ""
+
 msgctxt "#31221"
 msgid "Big"
 msgstr ""
 
 msgctxt "#31222"
 msgid "Mini"
+msgstr ""
+
+msgctxt "#31223"
+msgid "Raleway"
 msgstr ""
 
 msgctxt "#31224"
@@ -1245,7 +1253,7 @@ msgid "Focused text"
 msgstr ""
 
 msgctxt "#31309"
-msgid "Memory Used:"
+msgid "Memory Used"
 msgstr ""
 
 msgctxt "#31310"
@@ -1613,11 +1621,11 @@ msgid "[B]CONFIGURE INTERFACE SETTINGS[/B][CR]Change the skin · Set language an
 msgstr ""
 
 msgctxt "#31401"
-msgid "[B]CONFIGURE PLAYER SETTINGS[/B][CR]Configure video playback · Configure music playback · Configure picture slideshow[CR]Configure video language and subtitles"
+msgid "[B]CONFIGURE PLAYER SETTINGS[/B][CR]Configure video playback · Configure music playback[CR]Configure picture slideshow · Configure video language and subtitles"
 msgstr ""
 
 msgctxt "#31402"
-msgid "[B]CONFIGURE MEDIA SETTINGS[/B][CR]Set default select action · Configure file list options · Configure metadata options[CR]Manage databases"
+msgid "[B]CONFIGURE MEDIA SETTINGS[/B][CR]Set default select action · Configure file list options[CR]Configure metadata options · Manage databases"
 msgstr ""
 
 msgctxt "#31403"
@@ -1633,7 +1641,7 @@ msgid "[B]MONITOR YOUR SYSTEM[/B][CR]Check out your hardware · Monitor CPU usag
 msgstr ""
 
 msgctxt "#31406"
-msgid "[B]CONFIGURE SYSTEM SETTINGS[/B][CR]Setup and calibrate displays · Configure audio output · [CR]Set power saving options · Enable debugging"
+msgid "[B]CONFIGURE SYSTEM SETTINGS[/B][CR]Setup and calibrate displays · Configure audio output[CR]Set power saving options · Enable debugging"
 msgstr ""
 
 msgctxt "#31407"
@@ -1930,6 +1938,26 @@ msgstr ""
 
 msgctxt "#31480"
 msgid "Library Editor Script uses JSON to directly edit your database information."
+msgstr ""
+
+msgctxt "#31481"
+msgid "Ubuntu condensed"
+msgstr ""
+
+msgctxt "#31482"
+msgid "Fira sans"
+msgstr ""
+
+msgctxt "#31483"
+msgid "Caviar dreams"
+msgstr ""
+
+msgctxt "#31484"
+msgid "Play regular"
+msgstr ""
+
+msgctxt "#31485"
+msgid "Eject disc"
 msgstr ""
 
 msgctxt "#31501"
@@ -2493,7 +2521,7 @@ msgid "Watched status indicator"
 msgstr ""
 
 msgctxt "#31944"
-msgid "Choose which overlays to show on thumbs in icon based views. Note that the \"Resume\" flag takes precedent over any watched status."
+msgid "Choose which overlays to show on thumbs in icon based views. Note that the \"Resume\" flag takes precedent over any watched status. After activating an overlay you must also enable it in each views settings. "
 msgstr ""
 
 msgctxt "#31945"

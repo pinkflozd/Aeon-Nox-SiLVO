@@ -31,7 +31,7 @@
 				<width>1140</width>
 				<height>542</height>
 				<texture border="5">dialogs/default/inner.png</texture>
-				<animation effect="fade" start="100" end="80" time="400" condition="Window.isActive(fullscreenvideo)">Conditional</animation>
+				<animation effect="fade" start="100" end="80" time="400" condition="Window.IsActive(fullscreenvideo)">Conditional</animation>
 			</control>
 			<control type="grouplist" id="5">
 				<left>31</left>
@@ -50,7 +50,7 @@
 				<width>14</width>
 				<height>540</height>
 				<texturesliderbackground />
-				<texturesliderbar colordiffuse="55ffffff" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
 				<texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
 				<onleft>5</onleft>
 				<onright>9001</onright>
@@ -94,7 +94,7 @@
 					<width>312</width>
 					<height>542</height>
 					<texture border="5">dialogs/default/inner.png</texture>
-					<animation effect="fade" start="100" end="80" time="400" condition="Window.isActive(fullscreenvideo)">Conditional</animation>
+					<animation effect="fade" start="100" end="80" time="400" condition="Window.IsActive(fullscreenvideo)">Conditional</animation>
 				</control>
 				<control type="grouplist" id="9001">
 					<onup>9001</onup>
