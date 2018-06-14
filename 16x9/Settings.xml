@@ -122,6 +122,13 @@
 						<icon>views/settings/libreelec.png</icon>
 						<visible>System.HasAddon(service.libreelec.settings)</visible>
 					</item>
+					<item>
+						<label>CoreELEC</label>
+						<property name="description">31995</property>
+						<onclick>RunAddon(service.coreelec.settings)</onclick>
+						<icon>views/settings/coreelec.png</icon>
+						<visible>System.HasAddon(service.coreelec.settings)</visible>
+					</item>
 				</content>
 			</control>
 			<control type="textbox">

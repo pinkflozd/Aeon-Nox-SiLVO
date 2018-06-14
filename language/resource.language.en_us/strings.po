@@ -2487,3 +2487,7 @@ msgstr "Fake discart"
 msgctxt "#31994"
 msgid "Vertical Menu"
 msgstr "Vertical Menu"
+
+msgctxt "#31995"
+msgid "[B]CONFIGURE CoreELEC SETTINGS[/B][CR]Setup system option · Manage network[CR]Configure services · About CoreELEC"
+msgstr "[B]CONFIGURE CoreELEC SETTINGS[/B][CR]Setup system option · Manage network[CR]Configure services · About CoreELEC"
