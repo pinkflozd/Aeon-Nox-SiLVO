@@ -125,10 +125,10 @@
 		<value>$LOCALIZE[20445]</value>
 	</variable>
 	<variable name="VizBackgroundVar">
-		<value condition="!String.IsEmpty(Control.GetLabel(4411)) + String.IsEmpty(Player.Art(artist.fanart1)) + String.IsEqual(Skin.String(Viz.Background),7)">$INFO[Control.GetLabel(4411)]</value>
+		<value condition="String.IsEqual(Skin.String(Viz.Background),7) + !String.IsEmpty(Control.GetLabel(4411)) + String.IsEmpty(Player.Art(artist.fanart1))">$INFO[Control.GetLabel(4411)]</value>
 		<value condition="!String.IsEmpty(Control.GetLabel(4410)) + String.IsEqual(Skin.String(Viz.Background),7)">$INFO[Control.GetLabel(4410)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),2)">$INFO[Window(Home).Property(script.grab.fanart.Music.FanArt)]</value>
-		<value condition="[![String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),\transparent) | !String.EndsWith(Window(Visualisation).Property(ArtistSlideshow),/transparent)] + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshowTransparent))] | [String.IsEmpty(Window(Visualisation).Property(ArtistSlideshowTransparent))]] + String.IsEqual(Skin.String(Viz.Background),3)">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
+		<value condition="String.IsEqual(Skin.String(Viz.Background),3)">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
 		<value condition="String.IsEqual(Skin.String(Viz.Background),4) + !String.IsEmpty(Window(Home).Property(ImageColorFIVE)))">$INFO[Window(Home).Property(ImageFilterFIVE)]</value>
 		<value condition="[String.IsEqual(Skin.String(Viz.Background),5) | String.IsEqual(Skin.String(Viz.Background),6)] + !String.IsEmpty(Skin.String(CustomMusicBackground.path))">$INFO[Skin.String(CustomMusicBackground.path)]</value>
 		<value condition="!String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
@@ -1111,9 +1111,11 @@
 		<value>$INFO[ListItem.Plot]</value>
 	</variable>
 	<!-- DialogMusicInfo -->
-	<!-- Select dialog -->
+	<!-- SelectDialog -->
+	<!-- $INFO[Control.GetLabel(1)] -->
 	<variable name="DialogSelectLabel2Var">
 		<value condition="String.IsEqual(Control.GetLabel(1),$LOCALIZE[25006])">$INFO[ListItem.Duration(mins),, [LOWERCASE]$LOCALIZE[12391][/LOWERCASE]]</value>
+		<value condition="!String.IsEmpty(ListItem.Label2) + String.Contains(Control.GetLabel(1),Artwork Beef)">$INFO[ListItem.Label2]</value>
 		<value>$INFO[ListItem.AddonVersion]</value>
 	</variable>
 	<variable name="EpisodeCountVar">
