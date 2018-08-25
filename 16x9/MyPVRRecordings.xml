@@ -98,7 +98,7 @@
 						<width>900</width>
 						<height>35</height>
 						<font>font15</font>
-						<label>$INFO[ListItem.Label]</label>
+						<label>$INFO[ListItem.Label]$INFO[ListItem.EpisodeName, (,)]</label>
 						<animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
 					</control>
 					<control type="label">
@@ -253,7 +253,7 @@
 									<left>10</left>
 									<height>50</height>
 									<width>580</width>
-									<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Duration(mins)][/COLOR]  -  $INFO[ListItem.Label]</label>
+									<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Duration(mins)][/COLOR]  -  $INFO[ListItem.Label]$INFO[ListItem.Episode, (,)]</label>
 									<font>font12</font>
 								</control>
 							</focusedlayout>
@@ -262,7 +262,7 @@
 									<left>10</left>
 									<height>50</height>
 									<width>580</width>
-									<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Duration(mins)][/COLOR]  -  $INFO[ListItem.Label]</label>
+									<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Duration(mins)][/COLOR]  -  $INFO[ListItem.Label]$INFO[ListItem.Episode, (,)]</label>
 									<font>font12</font>
 								</control>
 							</itemlayout>
