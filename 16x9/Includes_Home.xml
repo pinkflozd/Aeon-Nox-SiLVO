@@ -914,7 +914,7 @@
 			<control type="group">
 				<left>40</left>
 				<top>50</top>
-				<visible>[VideoPlayer.Content(musicvideos) | VideoPlayer.Content(livetv) | Player.IsInternetStream] + ![VideoPlayer.Content(episodes) | VideoPlayer.Content(movies)]</visible>
+				<visible>[VideoPlayer.Content(musicvideos) | VideoPlayer.Content(livetv) | PVR.IsPlayingRecording | Player.IsInternetStream] + ![VideoPlayer.Content(episodes) | VideoPlayer.Content(movies)]</visible>
 				<control type="group">
 					<control type="image">
 						<top>-20</top>
@@ -936,7 +936,7 @@
 						<left>340</left>
 						<height>300</height>
 						<control type="group">
-							<visible>VideoPlayer.Content(livetv)</visible>
+                            <visible>VideoPlayer.Content(livetv) | PVR.IsPlayingRecording</visible>
 							<control type="label">
 								<width>840</width>
 								<height>40</height>
@@ -986,7 +986,7 @@
 									<height max="120">auto</height>
 									<font>font15</font>
 									<shadowcolor>black</shadowcolor>
-									<label>$INFO[VideoPlayer.Plot]</label>
+                                    <label>[I][COLOR grey2]$VAR[PVRNowPlayingSeasonAndEpisodeOrPlotOutlineVar][/COLOR][/I][CR]$INFO[VideoPlayer.Plot]</label>
 									<autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll)</autoscroll>
 								</control>
 								<control type="label">
@@ -997,7 +997,18 @@
 									<font>font48</font>
 									<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 									<shadowcolor>black</shadowcolor>
+                                    <visible>!PVR.IsPlayingRecording</visible>
 								</control>
+                                <control type="label">
+                                    <height>50</height>
+                                    <width>840</width>
+                                    <top>-20</top>
+                                    <label>[COLOR white2]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white2],[/COLOR]]</label>
+                                    <font>font48</font>
+                                    <textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
+                                    <shadowcolor>black</shadowcolor>
+                                    <visible>PVR.IsPlayingRecording</visible>
+                                </control>
 							</control>
 						</control>
 						<control type="label">
@@ -1007,7 +1018,7 @@
 							<textcolor>$VAR[ThemeHomeLabelColor]</textcolor>
 							<shadowcolor>black</shadowcolor>
 							<label>$INFO[Player.Title]</label>
-							<visible>!VideoPlayer.Content(livetv)</visible>
+							<visible>!VideoPlayer.Content(livetv) + !PVR.IsPlayingRecording</visible>
 						</control>
 						<control type="label">
 							<top>50</top>
@@ -1571,6 +1582,13 @@
 					<aspectratio>keep</aspectratio>
 					<texture background="true" fallback="DefaultTVShows.png">$INFO[PVR.NextRecordingChannelIcon]</texture>
 				</control>
+                <control type="image">
+                    <left>390</left>
+                    <width>90</width>
+                    <height>120</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">http://localhost:52307/getpvrthumb&amp;title=$INFO[PVR.NextRecordingTitle]&amp;type=poster</texture>
+                </control>
 				<control type="label">
 					<left>340</left>
 					<top>12</top>
@@ -1606,7 +1624,7 @@
 					<top>85</top>
 					<height>25</height>
 					<width>800</width>
-					<label>$INFO[PVR.NextRecordingTitle]</label>
+                    <label>$INFO[PVR.NextRecordingTitle]</label>
 					<align>right</align>
 					<font>font13_title</font>
 					<shadowcolor>black</shadowcolor>

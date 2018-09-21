@@ -42,19 +42,29 @@
 				<pagecontrol>72</pagecontrol>
 				<scrolltime tween="quadratic">200</scrolltime>
 				<itemlayout height="120" width="1140">
-					<control type="image">
-						<left>15</left>
+                    <control type="image" id="95555">
+						<left>10</left>
 						<top>8</top>
-						<width>105</width>
+						<width>180</width>
 						<height>105</height>
 						<aspectratio>keep</aspectratio>
-						<colordiffuse>88FFFFFF</colordiffuse>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
+                        <texture background="true">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo,clearart,fanart</texture>
+                        <visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
 					</control>
-					<control type="label">
-						<left>135</left>
+                    <control type="image">
+                        <left>10</left>
+                        <top>8</top>
+                        <width>180</width>
+                        <height>105</height>
+                        <aspectratio>keep</aspectratio>
+                        <colordiffuse>88FFFFFF</colordiffuse>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>[String.IsEqual(Control.GetLabel(95555),empty.png)]</visible>
+                    </control>
+                    <control type="label">
+						<left>205</left>
 						<top>20</top>
-						<width>950</width>
+						<width>880</width>
 						<height>70</height>
 						<font>font60</font>
 						<textcolor>grey2</textcolor>
@@ -62,22 +72,51 @@
 						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<width>950</width>
+						<left>205</left>
+						<width>880</width>
 						<height>70</height>
 						<font>font30</font>
 						<textcolor>grey2</textcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
 					</control>
+                    <control type="label">
+                        <left>205</left>
+                        <top>75</top>
+                        <width>880</width>
+                        <height>20</height>
+                        <font>font13</font>
+                        <textcolor>grey2</textcolor>
+                        <label>$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar,,[CR]]$INFO[ListItem.Plot]</label>
+                    </control>
+                    <control type="label">
+                        <left>595</left>
+                        <top>20</top>
+                        <width>420</width>
+                        <height>50</height>
+                        <font>font12</font>
+                        <textcolor>grey2</textcolor>
+                        <label>$INFO[ListItem.ChannelName]</label>
+                        <align>right</align>
+                    </control>
+                    <control type="image">
+                        <left>1025</left>
+                        <top>5</top>
+                        <width>60</width>
+                        <height>50</height>
+                        <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
+                    </control>
 					<control type="label">
-						<left>135</left>
-						<top>55</top>
-						<width>950</width>
-						<height>60</height>
-						<font>font15</font>
+						<left>205</left>
+                        <top>65</top>
+                        <width>880</width>
+                        <height>50</height>
+                        <font>font13</font>
 						<textcolor>grey3</textcolor>
 						<label>$INFO[ListItem.Date]</label>
+                        <align>right</align>
 					</control>
 					<control type="group">
 						<visible>[ListItem.HasTimer | ListItem.IsRecording]</visible>
@@ -111,38 +150,83 @@
 						<visible>Control.HasFocus(50)</visible>
 						<include>VisibleFadeAnimation</include>
 					</control>
-					<control type="image">
-						<left>15</left>
-						<top>8</top>
-						<width>105</width>
-						<height>105</height>
-						<aspectratio>keep</aspectratio>
-						<texture background="true">$INFO[ListItem.Icon]</texture>
-					</control>
+                    <control type="image" id="95555">
+                        <left>10</left>
+                        <top>8</top>
+                        <width>180</width>
+                        <height>105</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearlogo,clearart,fanart</texture>
+                        <visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
+                    </control>
+                    <control type="image">
+                        <left>10</left>
+                        <top>8</top>
+                        <width>180</width>
+                        <height>105</height>
+                        <aspectratio>keep</aspectratio>
+                        <colordiffuse>88FFFFFF</colordiffuse>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>[String.IsEqual(Control.GetLabel(95555),empty.png)]</visible>
+                    </control>
 					<control type="label">
-						<left>135</left>
+						<left>205</left>
 						<top>20</top>
-						<width>950</width>
+						<width>880</width>
 						<height>70</height>
 						<font>font60</font>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
+                        <shadowcolor>black</shadowcolor>
 					</control>
 					<control type="label">
-						<left>135</left>
-						<width>950</width>
+						<left>205</left>
+						<width>880</width>
 						<height>70</height>
 						<font>font30</font>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
+                        <shadowcolor>black</shadowcolor>
 					</control>
+                    <control type="label">
+                        <left>205</left>
+                        <top>75</top>
+                        <width>880</width>
+                        <height>20</height>
+                        <font>font13</font>
+                        <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                        <label>$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar,,[CR]]$INFO[ListItem.Plot]</label>
+                        <shadowcolor>black</shadowcolor>
+                    </control>
+                    <control type="label">
+                        <left>595</left>
+                        <top>20</top>
+                        <width>420</width>
+                        <height>50</height>
+                        <font>font12</font>
+                        <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                        <label>$INFO[ListItem.ChannelName]</label>
+                        <align>right</align>
+                        <shadowcolor>black</shadowcolor>
+                    </control>
+                    <control type="image">
+                        <left>1025</left>
+                        <top>5</top>
+                        <width>60</width>
+                        <height>50</height>
+                        <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>!String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
+                    </control>
 					<control type="label">
-						<left>135</left>
-						<top>55</top>
-						<width>950</width>
-						<height>60</height>
-						<font>font15</font>
+						<left>205</left>
+						<top>65</top>
+						<width>880</width>
+						<height>50</height>
+						<font>font13</font>
 						<label>$INFO[ListItem.Date]</label>
+                        <align>right</align>
+                        <shadowcolor>black</shadowcolor>
 					</control>
 					<control type="group">
 						<visible>[ListItem.HasTimer | ListItem.IsRecording]</visible>
@@ -185,24 +269,48 @@
 			<control type="group">
 				<left>1196</left>
 				<top>195</top>
-				<control type="image">
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="bottom">keep</aspectratio>
-					<texture background="true" fallback="DefaultVideo.png">$INFO[Container(50).ListItem.Icon]</texture>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
-					<bordersize>20</bordersize>
-				</control>
-				<control type="image">
-					<top>795</top>
-					<width>570</width>
-					<height>835</height>
-					<aspectratio aligny="top">keep</aspectratio>
-					<fadetime>IconCrossfadeTime</fadetime>
-					<texture diffuse="thumbs/thumb_reflect.png" flipy="true" fallback="DefaultVideo.png" background="true">$INFO[Container(50).ListItem.Icon]</texture>
-					<bordersize>20</bordersize>
-				</control>
+                <control type="group">
+                    <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster)) + !String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
+                    <control type="image">
+                        <width>570</width>
+                        <height>835</height>
+                        <aspectratio aligny="bottom">keep</aspectratio>
+                        <texture background="true" fallback="DefaultVideo.png">$INFO[Container(50).ListItem.Icon]</texture>
+                        <fadetime>IconCrossfadeTime</fadetime>
+                        <bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+                        <bordersize>20</bordersize>
+                    </control>
+                    <control type="image">
+                        <top>795</top>
+                        <width>570</width>
+                        <height>835</height>
+                        <aspectratio aligny="top">keep</aspectratio>
+                        <fadetime>IconCrossfadeTime</fadetime>
+                        <texture diffuse="thumbs/thumb_reflect.png" flipy="true" fallback="DefaultVideo.png" background="true">$INFO[Container(50).ListItem.Icon]</texture>
+                        <bordersize>20</bordersize>
+                    </control>
+                </control>
+                <control type="group">
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster)) + !String.IsEqual(ListItem.Label,$LOCALIZE[19026])</visible>
+                    <control type="image">
+                        <width>570</width>
+                        <height>835</height>
+                        <aspectratio aligny="bottom">keep</aspectratio>
+                        <texture background="true" fallback="DefaultVideo.png">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Poster)]</texture>
+                        <fadetime>IconCrossfadeTime</fadetime>
+                        <bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+                        <bordersize>20</bordersize>
+                    </control>
+                    <control type="image">
+                        <top>815</top>
+                        <width>570</width>
+                        <height>835</height>
+                        <texture background="true" flipy="true" diffuse="thumbs/thumb_reflect.png">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Poster)]</texture>
+                        <fadetime>IconCrossfadeTime</fadetime>
+                        <bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+                        <aspectratio>keep</aspectratio>
+                    </control>
+                </control>
 			</control>
 		</control>
 		<include condition="!Skin.HasSetting(Disable.ScrollLabel)">ScrollOffsetLabel</include>

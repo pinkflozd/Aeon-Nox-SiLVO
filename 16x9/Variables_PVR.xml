@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <!-- ToDo -->
+    <variable name="PVRStatusImageVar">
+        <value condition="ListItem.IsRecording">windows/pvr/record.png</value>
+        <value condition="ListItem.HasTimer | ListItem.HasTimerSchedule">windows/pvr/timer.png</value>
+    </variable>
+    
+    <variable name="ExpirationDateTimeLabel">
+        <value condition="!String.IsEmpty(ListItem.ExpirationDate) + Window.IsVisible(DialogPVRInfo.xml)">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19299]:[/COLOR] $INFO[ListItem.ExpirationDate] $INFO[ListItem.ExpirationTime]</value>
+        <value condition="!String.IsEmpty(ListItem.ExpirationDate)">[COLOR grey2]$LOCALIZE[19299]:[/COLOR] $INFO[ListItem.ExpirationDate] $INFO[ListItem.ExpirationTime][CR]</value>
+    </variable>
+    <variable name="VideoLibraryScanLabel">
+        <value condition="Library.IsScanningVideo">$LOCALIZE[13353]</value>
+        <value>$LOCALIZE[653]</value>
+    </variable>
+    <variable name="VideoLibraryScanIcon">
+        <value>empty.png</value>
+    </variable>
+    <variable name="MusicLibraryScanLabel">
+        <value condition="Library.IsScanningMusic">$LOCALIZE[13353]</value>
+        <value>$LOCALIZE[653]</value>
+    </variable>
+    <variable name="MusicLibraryScanIcon">
+        <value>empty.png</value>
+    </variable>
+    
+	<!-- SkinHelper is mandatory! -->
+    <variable name="PVRSeasonAndEpisodeVar">
+        <value condition="String.IsEmpty(ListItem.Season) + String.IsEmpty(ListItem.Episode)"></value>
+        <value condition="String.IsEmpty(ListItem.Season) + !String.IsEmpty(ListItem.Episode)">e$INFO[ListItem.Episode]</value>
+        <value condition="!String.IsEmpty(ListItem.Season) + String.IsEmpty(ListItem.Episode)">s$INFO[ListItem.Season]eX</value>
+        <value condition="!String.IsEmpty(ListItem.Season) + !String.IsEmpty(ListItem.Episode)">s$INFO[ListItem.Season]e$INFO[ListItem.Episode]</value>
+    </variable>
+
+    
+    <variable name="PVREpisodenameOrPlotOutlineVar">
+        <value condition="!String.IsEmpty(ListItem.Episodename)">$INFO[ListItem.Episodename]</value>
+        <value condition="!String.IsEmpty(ListItem.PlotOutline)">$INFO[ListItem.PlotOutline]</value>
+    </variable>
+    
+    
+    
+    
+    <variable name="PVRSeasonAndEpisodeOrPlotOutlineVarOld">
+        <value condition="!String.IsEmpty(Container.ListItem.Episodename) + Window.IsVisible(pvrchannelguide)">$INFO[ListItem.Episodename]</value>
+        <value condition="!String.IsEmpty(ListItem.Episodename) + [Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrosdchannels)]">$VAR[PVRSeasonAndEpisodeVar,, - ]$INFO[ListItem.Episodename]</value>
+        
+        <value condition="!String.IsEmpty(ListItem.Episodename) + [Window.IsVisible(pvrguideinfo) | Window.IsVisible(pvrosdchannels) + Window.IsVisible(pvrtvguide)]">$VAR[PVRSeasonAndEpisodeVar,, - ]$INFO[ListItem.Episodename]</value>
+        
+        <!--<value condition="[PVR.IsPlayingTv | PVR.IsPlayingRecording] + !String.IsEmpty(VideoPlayer.Episodename)">$INFO[VideoPlayer.Season,s]$INFO[VideoPlayer.Episode,e, - ]$INFO[VideoPlayer.Episodename]</value>
+        <value condition="[PVR.IsPlayingTv | PVR.IsPlayingRecording]">$INFO[VideoPlayer.PlotOutline]</value>-->
+        <!--<value condition="!String.IsEmpty(Container.ListItem.Episodename)">ddd $INFO[Container.ListItem.Season,S]$INFO[Container.ListItem.Episode,E, - ]$INFO[Container.ListItem.Episodename]</value>-->
+        
+        <value condition="!String.IsEmpty(Container.ListItem.Episodename)">$VAR[PVRSeasonAndEpisodeVar,, - ]$INFO[ListItem.Episodename]</value>
+        
+        <value condition="String.IsEmpty(Container.ListItem.Episodename)">$VAR[PVRSeasonAndEpisodeVar,, - ]$INFO[Container.ListItem.Episodename]</value>
+        <value condition="Window.IsVisible(pvrguideinfo)">$INFO[ListItem.PlotOutline]</value>
+        <value>$INFO[Container.ListItem.PlotOutline]</value>
+    </variable>
+        
+    <variable name="PVRNowPlayingSeasonAndEpisodeOrPlotOutlineVar">
+        <!--<value condition="[PVR.IsPlayingTV | PVR.IsPlayingRecording] + !String.IsEmpty(VideoPlayer.Episodename) + ![Window.IsVisible(pvrguideinfo) | Window.IsVisible(tvguide)]">$INFO[VideoPlayer.Season,s]$INFO[VideoPlayer.Episode,e, - ]$INFO[VideoPlayer.Episodename]</value>
+        <value condition="[PVR.IsPlayingTV | PVR.IsPlayingRecording] + ![Window.IsVisible(pvrguideinfo) | Window.IsVisible(tvguide)]">$INFO[VideoPlayer.PlotOutline]</value>-->
+        
+        <value condition="[PVR.IsPlayingTV | PVR.IsPlayingRecording] + !String.IsEmpty(VideoPlayer.Episodename)">$INFO[VideoPlayer.Season,s]$INFO[VideoPlayer.Episode,e, - ]$INFO[VideoPlayer.Episodename]</value>
+        <value condition="[PVR.IsPlayingTV | PVR.IsPlayingRecording]">$INFO[VideoPlayer.PlotOutline]</value>
+    </variable>
+
+    <variable name="PVRFullScreenInfoTitleVar">
+        <value condition="String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.Title]</value>
+        <value condition="!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[19031]:[/COLOR] $INFO[VideoPlayer.NextTitle]</value>
+    </variable>
+
+    <variable name="PVRFullScreenInfoSeasonEpisodeVar">
+        <value condition="String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$VAR[PVRNowPlayingSeasonAndEpisodeOrPlotOutlineVar]</value>
+        <value condition="!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.NextPlotOutline]</value>
+    </variable>
+    
+    <variable name="PVRFullScreenInfoGenreVar">
+        <value condition="String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.Genre,$LOCALIZE[515]: ]</value>
+        <value condition="!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.NextGenre,$LOCALIZE[515]: ]</value>
+    </variable>
+    
+    <variable name="PVRFullScreenInfoPlotVar">
+        <value condition="String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.Plot]</value>
+        <value condition="!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">$INFO[VideoPlayer.NextPlot]</value>
+    </variable>
+    
+	<variable name="PVRClearArtVar">
+		<!--<value condition="PVR.IsPlayingRecording">$INFO[Window(Home).Property(SkinHelper.Player.Art.clearart)]</value>-->
+		<!-- Player.Art is not working! -->
+<!-- 		<value condition="PVR.IsPlayingRecording">http://localhost:52307/getpvrthumb&amp;title=$INFO[Player.Title]&amp;type=clearart</value> -->
+		
+		<value condition="VideoPlayer.Content(livetv) + String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext)) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearArt))">$INFO[Window(Home).Property(SkinHelper.Player.Art.ClearArt)]</value>
+		<value condition="VideoPlayer.Content(livetv) + String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext)) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.Clearlogo))">$INFO[Window(Home).Property(SkinHelper.Player.Art.Clearlogo)]</value>
+		
+		<value condition="VideoPlayer.Content(livetv) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))">http://localhost:52307/getpvrthumb&amp;title=$INFO[VideoPlayer.NextTitle]&amp;type=clearart,banner,poster</value>
+		
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearArt))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ClearArt)]</value>
+		
+		<value>http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=clearart</value>
+	</variable>
+	
+	<variable name="PVRChannelIconVar">
+<!-- 		<value condition="Window.IsVisible(PVRGuideInfo)">$INFO[ListItem.Icon]</value> -->
+        <value condition="Window.IsVisible(PVRGuideInfo)">$INFO[ListItem.Art(Thumb)]</value>
+        <value condition="PVR.IsPlayingRecording + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ChannelLogo))">$INFO[Window(Home).Property(SkinHelper.Player.Art.ChannelLogo)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ChannelLogo))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ChannelLogo)]</value>
+		<value>$INFO[ListItem.ActualIcon]</value>
+	</variable>
+	
+	<variable name="PVRPosterOrThumbVar">
+		
+		<!--<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + 
+		 !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.Poster))">$INFO[Window(Home).Property(SkinHelper.Player.Art.Poster)]</value>-->
+		<!-- Player.Art is not working! -->
+<!-- 		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + Pvr.IsPlayingRecording">http://localhost:52307/getpvrthumb&amp;title=$INFO[Player.Title]&amp;type=poster</value> -->
+		
+		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Poster)]</value>
+		
+		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.Poster)) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.Thumb))">$INFO[Window(Home).Property(SkinHelper.Player.Art.Thumb)]</value>
+		
+		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + Window.IsVisible(tvrecordings)">http://localhost:52307/getpvrthumb&amp;title=$INFO[ListItem.Title]&amp;type=poster</value>
+		
+		<value condition="!System.HasAddon(script.skin.helper.service) | !Skin.HasSetting(SkinHelper.EnablePVRThumbs) |  [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster)) + !Window.IsVisible(PVRRecordingInfo)] + !Window.IsVisible(PVRGuideInfo) + !Pvr.IsPlayingRecording">$INFO[ListItem.ActualIcon]</value>
+		
+		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster)) + Window.IsVisible(PVRRecordingInfo)">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Thumb)]</value>
+		
+		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster)) + String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Thumb)) + !Window.IsVisible(PVRRecordingInfo)">http://localhost:52307/getpvrthumb&amp;title=$ESCINFO[ListItem.Label]&amp;type=poster,thumb</value>
+	</variable>
+	
+	<variable name="PVRFanartBGVar">
+		<!--<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + Skin.HasSetting(SkinHelper.EnablePVRFanartBG) + 
+		 !String.IsEmpty(SkinHelper.ListItem.Art.Fanart)">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Fanart)]</value>
+		
+		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + Skin.HasSetting(SkinHelper.EnablePVRFanartBG) +
+		 Pvr.IsPlayingRecording">$INFO[Window(Home).Property(SkinHelper.Player.Art.Fanart)]</value>
+		
+		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + Skin.HasSetting(SkinHelper.EnablePVRFanartBG) + 
+		 Window.IsVisible(tvchannels)">http://localhost:52307/getpvrthumb&amp;title=$INFO[ListItem.Title]&amp;type=fanart</value>
+		
+		
+		<value condition="Skin.HasSetting(SkinHelper.EnablePVRThumbs) + Skin.HasSetting(SkinHelper.EnablePVRFanartBG) + 
+		 !String.IsEmpty(ListItem.Label)">http://localhost:52307/getpvrthumb&amp;title=$INFO[ListItem.Label]&amp;type=fanart</value>-->
+        
+        <value>$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Fanart)]</value>
+        
+        <!--<value>$INFO[Skin.String(LiveTV.Fallback)]</value>-->
+        
+	</variable>
+	
+	<include name="PVRTimerOrRecStatusIcon">
+		<!-- Timer Icons -->
+		<control type="group">
+			<visible>ListItem.HasTimer  +  !ListItem.IsRecording</visible>
+			<!-- Single Timer Icon -->
+			<control type="image">
+				<left>5</left>
+				<top>7</top>
+				<width>45</width>
+				<height>45</height>
+				<texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/PVR-HasTimer2.png</texture>
+				<visible>!ListItem.HasTimerSchedule</visible>
+			</control>
+			<!-- Recurring Timer Icon -->
+			<control type="group">
+				<visible>ListItem.HasTimerSchedule</visible>
+				<top>7</top>
+				<control type="image">
+					<left>3</left>
+					<width>40</width>
+					<height>40</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/PVR-HasTimer2.png</texture>
+				</control>
+				<control type="image">
+					<left>11</left>
+					<width>40</width>
+					<height>40</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/PVR-HasTimer2.png</texture>
+					<animation effect="fade" start="100" end="75" time="0" condition="true">Conditional</animation>
+				</control>
+				<control type="image">
+					<left>19</left>
+					<width>40</width>
+					<height>40</height>
+					<texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/PVR-HasTimer2.png</texture>
+					<animation effect="fade" start="100" end="50" time="0" condition="true">Conditional</animation>
+				</control>
+			</control>
+		</control>
+		<!-- RecordingIcon -->
+		<control type="image">
+			<top>7</top>
+			<width>50</width>
+			<height>50</height>
+			<texture>new_pvr/PVR-IsRecording.png</texture>
+			<animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">Conditional</animation>
+			<visible>ListItem.IsRecording</visible>
+		</control>
+	</include>
+</includes>

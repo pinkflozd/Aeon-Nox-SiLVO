@@ -66,12 +66,12 @@
 						</control>
 						<control type="progress">
 							<left>85</left>
-							<top>25</top>
+							<top>24</top>
 							<width>80</width>
-							<height>12</height>
+							<height>14</height>
 							<info>ListItem.Progress</info>
-							<texturebg border="2">osd/texturebg2.png</texturebg>
-							<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="2">osd/midtexture.png</midtexture>
+                            <texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3,0,3,0">new_pvr/texturebg_border_white.png</texturebg>
+                            <midtexture colordiffuse="$VAR[ThemeLabelColor]" border="0">new_pvr/texturebg_white.png</midtexture>
 						</control>
 						<control type="label">
 							<left>180</left>
@@ -79,7 +79,7 @@
 							<font>font14_textbox</font>
 							<width>690</width>
 							<height>61</height>
-							<label>[B][COLOR white]$INFO[ListItem.Label][/COLOR][/B]$INFO[ListItem.Title,  ]</label>
+                            <label>[B][COLOR white]$INFO[ListItem.Label][/COLOR][/B]$INFO[ListItem.Title,  ] $VAR[PVRSeasonAndEpisodeVar]</label>
 						</control>
 						<control type="image">
 							<animation effect="fade" start="100" end="40" time="1200" pulse="true" condition="true">Conditional</animation>
@@ -117,12 +117,12 @@
 						</control>
 						<control type="progress">
 							<left>85</left>
-							<top>25</top>
+							<top>24</top>
 							<width>80</width>
-							<height>12</height>
+							<height>14</height>
 							<info>ListItem.Progress</info>
-							<texturebg border="2">osd/texturebg2.png</texturebg>
-							<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="2">osd/midtexture2.png</midtexture>
+                            <texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3,0,3,0">new_pvr/texturebg_border_white.png</texturebg>
+                            <midtexture colordiffuse="$VAR[ThemeLabelColor]" border="0">new_pvr/texturebg_white.png</midtexture>
 						</control>
 						<control type="label">
 							<left>180</left>
@@ -130,7 +130,7 @@
 							<font>font14_textbox</font>
 							<width>690</width>
 							<height>61</height>
-							<label>[B]$INFO[ListItem.Label][/B]$INFO[ListItem.Title,  ]</label>
+                            <label>[B]$INFO[ListItem.Label][/B]$INFO[ListItem.Title,  ] $VAR[PVRSeasonAndEpisodeVar]</label>
 						</control>
 						<control type="image">
 							<animation effect="fade" start="100" end="40" time="1200" pulse="true" condition="true">Conditional</animation>
@@ -200,8 +200,8 @@
 							<width>460</width>
 							<height>16</height>
 							<info>Container(11).ListItem.Progress</info>
-							<texturebg border="2">osd/texturebg2.png</texturebg>
-							<midtexture colordiffuse="$VAR[ThemeLabelColor]" border="2">osd/midtexture2.png</midtexture>
+                            <texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3,0,3,0">new_pvr/texturebg_border_white.png</texturebg>
+                            <midtexture colordiffuse="$VAR[ThemeLabelColor]" border="0">new_pvr/texturebg_white.png</midtexture>
 						</control>
 					</control>
 					<control type="label">
@@ -211,7 +211,7 @@
 						<font>font16</font>
 						<aligny>top</aligny>
 						<textcolor>$VAR[ThemeLabelColor]</textcolor>
-						<label>$INFO[Container(11).ListItem.Title]</label>
+                        <label>$INFO[Container(11).ListItem.Title]</label>
 						<scroll>true</scroll>
 					</control>
 					<control type="label">
@@ -220,9 +220,8 @@
 						<width>720</width>
 						<font>font15_bold</font>
 						<aligny>top</aligny>
-						<label>$INFO[Container(11).ListItem.EpisodeName]</label>
+                        <label>$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar]</label>
 						<scroll>true</scroll>
-						<visible>!String.IsEmpty(Container(11).ListItem.EpisodeName) + !String.IsEqual(Container(11).ListItem.EpisodeName,Container(11).ListItem.Plot)</visible>
 					</control>
 					<control type="textbox">
 						<top>275</top>
@@ -285,7 +284,7 @@
 				<width>15</width>
 				<height>855</height>
 				<texturesliderbackground />
-				<texturesliderbar colordiffuse="80FFFFFF" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+				<texturesliderbar colordiffuse="55ffffff" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
 				<showonepage>false</showonepage>
 				<orientation>vertical</orientation>
 			</control>

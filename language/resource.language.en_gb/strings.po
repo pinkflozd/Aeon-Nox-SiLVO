@@ -1964,14 +1964,6 @@ msgctxt "#31486"
 msgid "Use Video Lyrics mod"
 msgstr ""
 
-msgctxt "#31487"
-msgid "More video info details"
-msgstr ""
-
-msgctxt "#31488"
-msgid "Plays"
-msgstr ""
-
 msgctxt "#31501"
 msgid "Channel group"
 msgstr ""
@@ -2694,4 +2686,8 @@ msgstr ""
 
 msgctxt "#31994"
 msgid "Vertical Menu"
+msgstr ""
+
+msgctxt "#31995"
+msgid "Mini when playing Video"
 msgstr ""

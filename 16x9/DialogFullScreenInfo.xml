@@ -35,8 +35,8 @@
 			<animation effect="fade" end="100" time="200" delay="200">WindowOpen</animation>
 			<animation effect="fade" start="100" time="200" delay="200">WindowClose</animation>
 			<visible>!VideoPlayer.Content(LiveTV)</visible>
+            <!-- Media Flag Bar Background -->
 			<control type="group">
-				<!-- Media Flag Bar Background -->
 				<control type="image">
 					<top>-240</top>
 					<width>1920</width>
@@ -113,7 +113,7 @@
 					<width>2020</width>
 					<height>800</height>
 					<texture colordiffuse="B3FFFFFF" border="40">listpanel_back.png</texture>
-					<visible>[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]</visible>
+					<visible>[VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | Player.IsInternetstream | PVR.IsPlayingRecording]</visible>
 				</control>
 				<control type="group">
 					<top>600</top>
@@ -134,7 +134,7 @@
 						<height>405</height>
 						<aspectratio aligny="top">stretch</aspectratio>
 						<texture background="true" diffuse="thumbs/movieposter_mask.png">$VAR[PlayerPosterVar]</texture>
-						<visible>!VideoPlayer.Content(musicvideos)</visible>
+                        <visible>!VideoPlayer.Content(musicvideos)</visible>
 					</control>
 					<control type="image">
 						<top>30</top>
@@ -144,8 +144,113 @@
 						<texture background="true" diffuse="thumbs/movieposter_mask.png">$VAR[PlayerPosterVar]</texture>
 						<visible>VideoPlayer.Content(musicvideos)</visible>
 					</control>
+                    <control type="group">
+                        <visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | PVR.IsPlayingRecording</visible>
+                        <control type="image">
+                            <top>-508</top>
+                            <width>350</width>
+                            <height>200</height>
+                            <aspectratio aligny="center" align="center">keep</aspectratio>
+                            <texture background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.Clearlogo)]</texture>
+                        </control>
+                        <control type="image">
+                            <left>1570</left>
+                            <top>-508</top>
+                            <width>350</width>
+                            <height>260</height>
+                            <aspectratio aligny="center" align="center">keep</aspectratio>
+                            <texture background="true">$VAR[PVRChannelIconVar]</texture>
+                        </control>
+                        <control type="image">
+                            <left>1570</left>
+                            <top>-108</top>
+                            <width>350</width>
+                            <height>260</height>
+                            <aspectratio aligny="bottom" align="right">keep</aspectratio>
+                            <texture background="true">$INFO[Window(Home).Property(SkinHelper.Player.Art.Clearart)]</texture>
+                        </control>
+                    </control>
+                    
+                    <!-- ######################################################################## -->
+                    <!-- ######################################################################## -->
+                    <!-- YouTube and other videostreams START -->
+                    <!-- This really needs polishing and can maybe included in already existing code! -->
+                    <control type="group">
+                        <visible>Player.IsInternetstream + ![VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)]</visible>
+                        <!-- YT image (thumb) -->
+                        <control type="image">
+                            <top>173</top>
+                            <width>378</width>
+                            <height>250</height>
+                            <aspectratio  aligny="bottom" align="left">keep</aspectratio>
+                            <!-- I'm using HomeNowPlayingThumbVar here, because it it working in Homescreen and I don't wanted to create another VAR ;) -->
+                            <texture background="true">$VAR[HomeNowPlayingThumbVar]</texture>
+                        </control>
+                        <control type="group">
+                            <left>340</left>
+                            <top>165</top>
+                            <width>1720</width>
+                            <height>500</height>
+                            <control type="grouplist">
+                                <width>1720</width>
+                                <height>500</height>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <visible>String.IsEmpty(Window(fullscreeninfo).Property(ShowMiniPlot)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowCast))</visible>
+                                <control type="label">
+                                    <top>-5</top>
+                                    <width>1120</width>
+                                    <height>60</height>
+                                    <font>font30_title_bold</font>
+                                    <textcolor>grey</textcolor>
+                                    <scroll>true</scroll>
+                                    <label>$INFO[Player.Title]$INFO[VideoPlayer.Year, (,)]</label>
+                                </control>
+                                <control type="grouplist">
+                                    <top>-5</top>
+                                    <width>1720</width>
+                                    <height>65</height>
+                                    <orientation>horizontal</orientation>
+                                    <itemgap>10</itemgap>
+                                    <usecontrolcoords>true</usecontrolcoords>
+                                    <visible>String.IsEmpty(Window(fullscreeninfo).Property(ShowCast)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowMiniPlot))</visible>
+                                    <control type="button">
+                                        <left>-15</left>
+                                        <top>10</top>
+                                        <width>auto</width>
+                                        <height>60</height>
+                                        <font>font15</font>
+                                        <textcolor>grey</textcolor>
+                                        <texturenofocus />
+                                        <label>$INFO[Player.FinishTime,$LOCALIZE[31393]: ,]  •  $VAR[PlayerTimeRemainingHourVar,, ]$VAR[PlayerTimeRemainingMinuteVar]</label>
+                                    </control>
+                                </control>
+                            </control>
+                            <control type="grouplist">
+                                <width>1720</width>
+                                <height>500</height>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <control type="textbox" id="400">
+                                    <top>115</top>
+                                    <width>1120</width>
+                                    <height>220</height>
+                                    <font>font15_textbox2</font>
+                                    <label>$VAR[VideoPlayerPlotVar]</label>
+                                    <textcolor>grey</textcolor>
+                                    <pagecontrol>61</pagecontrol>
+                                    <align>justify</align>
+                                    <autoscroll time="3000" delay="4000" repeat="5000">true</autoscroll>
+                                    <!-- Mike, please have a look at the conditions, thx -->
+                                    <!--<visible>!String.IsEmpty(Window(fullscreeninfo).Property(ShowMiniPlot)) + String.IsEmpty(Window(fullscreeninfo).Property(ShowCast)) + !Skin.HasSetting(Disable.FullscreenInfoLogo) + !String.IsEmpty(Control.GetLabel(999149))</visible>-->
+                                </control>
+                            </control>
+                        </control>
+                    </control>
+                     <!-- END Youtube -->
+                    <!-- ######################################################################## -->
+                    <!-- ######################################################################## -->
+
 					<control type="group">
-						<visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)</visible>
+						<visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes) | PVR.IsPlayingRecording</visible>
 						<left>250</left>
 						<top>-5</top>
 						<control type="image" id="999149">
@@ -204,6 +309,13 @@
 									<label>$INFO[VideoPlayer.Season,$LOCALIZE[20373] ,: ]$INFO[VideoPlayer.Episode,$LOCALIZE[20359] ]$INFO[VideoPlayer.Title,  -  ]$INFO[VideoPlayer.Premiered, (,)]</label>
 									<visible>VideoPlayer.Content(episodes)</visible>
 								</control>
+                                <control type="label">
+                                    <width>auto</width>
+                                    <height>30</height>
+                                    <label>$VAR[PVRNowPlayingSeasonAndEpisodeOrPlotOutlineVar]</label>
+                                    <font>font16</font>
+                                    <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                                </control>
 								<control type="grouplist">
 									<top>-5</top>
 									<width>1720</width>

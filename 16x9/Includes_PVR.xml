@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <!-- PVR Info MikeSiLVO -->
+    <include name="PVRInfo_Mike">
+        <defaultcontrol always="true">7</defaultcontrol>
+        <controls>
+            <control type="group">
+                <top>540</top>
+                <animation effect="slide" start="-729,0" end="0,0" time="500" tween="quadratic">WindowOpen</animation>
+                <animation effect="slide" end="-729,0" time="500" tween="quadratic">WindowClose</animation>
+                <control type="image">
+                    <width>729</width>
+                    <height>540</height>
+                    <texture>black-back.png</texture>
+                </control>
+                <control type="image">
+                    <width>729</width>
+                    <height>180</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="aeon-nox-logo.png">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Clearlogo)]</texture>
+                </control>
+                <control type="image">
+                    <top>-10</top>
+                    <width>729</width>
+                    <height>540</height>
+                    <aspectratio scalediffuse="false" aligny="bottom">center</aspectratio>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                </control>
+            </control>
+            <control type="group">
+                <animation effect="slide" start="1242,0" end="0,0" time="500" tween="quadratic">WindowOpen</animation>
+                <animation effect="slide" end="1242,0" time="500" tween="quadratic">WindowClose</animation>
+                <left>729</left>
+                <top>540</top>
+                <control type="image">
+                    <width>1192</width>
+                    <height>540</height>
+                    <texture>black-back.png</texture>
+                </control>
+                <control type="group">
+                    <left>40</left>
+                    <width>1042</width>
+                    <height>854</height>
+                    <control type="grouplist">
+                        <top>-10</top>
+                        <width>1100</width>
+                        <height>110</height>
+                        <align>center</align>
+                        <control type="label">
+                            <width>1100</width>
+                            <height>60</height>
+                            <font>font30_title_bold</font>
+                            <textcolor>grey</textcolor>
+                            <scroll>true</scroll>
+                            <label>$INFO[ListItem.Title]</label>
+                        </control>
+                        <control type="label">
+                            <width>1100</width>
+                            <height>30</height>
+                            <font>font15</font>
+                            <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                            <scroll>true</scroll>
+                            <label>$INFO[ListItem.EpisodeName]</label>
+                        </control>
+                    </control>
+                    <control type="image">
+                        <left>-36</left>
+                        <top>99</top>
+                        <width>1188</width>
+                        <height>1</height>
+                        <texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/osd_line_white.png</texture>
+                    </control>
+                    <control type="grouplist">
+                        <top>90</top>
+                        <width>1188</width>
+                        <height>85</height>
+                        <orientation>horizontal</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="label">
+                            <top>18</top>
+                            <width>1188</width>
+                            <height>60</height>
+                            <label>$INFO[ListItem.StartTime] - $INFO[ListItem.EndTime] ($INFO[ListItem.Duration])</label>
+                            <font>font52_bold</font>
+                            <textcolor>grey</textcolor>
+                        </control>
+                    </control>
+                    <control type="image">
+                        <left>-36</left>
+                        <top>175</top>
+                        <width>1188</width>
+                        <height>1</height>
+                        <texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/osd_line_white.png</texture>
+                    </control>
+                    <control type="panel" id="300">
+                        <left>-36</left>
+                        <top>171</top>
+                        <width>1188</width>
+                        <height>180</height>
+                        <ondown>9000</ondown>
+                        <orientation>horizontal</orientation>
+                        <scrolltime tween="quadratic" easing="out">200</scrolltime>
+                        <itemlayout height="72" width="1188">
+                            <control type="label">
+                                <width>1188</width>
+                                <height>67</height>
+                                <font>font15</font>
+                                <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                                <label>$INFO[ListItem.Label2,, ]$INFO[ListItem.Label,[COLOR grey], [/COLOR]]</label>
+                                <textoffsetx>36</textoffsetx>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout height="72" width="1188">
+                            <control type="image">
+                                <top>5</top>
+                                <width>1188</width>
+                                <height>62</height>
+                                <texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+                                <visible>Control.HasFocus(300)</visible>
+                                <include>VisibleFadeAnimation</include>
+                            </control>
+                            <control type="label">
+                                <width>1188</width>
+                                <height>67</height>
+                                <font>font15</font>
+                                <label>$INFO[ListItem.Label2,, ]$INFO[ListItem.Label]</label>
+                                <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(300)">Conditional</animation>
+                                <textoffsetx>36</textoffsetx>
+                            </control>
+                        </focusedlayout>
+                        <content>
+                            <item>
+                                <label>$INFO[ListItem.StartDate]</label>
+                                <label2>$LOCALIZE[552]:</label2>
+                                <visible>!String.IsEmpty(ListItem.StartDate)</visible>
+                            </item>
+                            <item>
+                                <label>$INFO[ListItem.Genre]</label>
+                                <label2>$LOCALIZE[515]:</label2>
+                                <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                            </item>
+                            <item>
+                                <label>$INFO[ListItem.DateAdded]</label>
+                                <label2>$LOCALIZE[570]:</label2>
+                                <visible>!String.IsEmpty(ListItem.DateAdded)</visible>
+                            </item>
+                            <item>
+                                <label>$INFO[ListItem.PlayCount]</label>
+                                <label2>$LOCALIZE[567]:</label2>
+                                <visible>!String.IsEmpty(ListItem.PlayCount)</visible>
+                            </item>
+                            <item>
+                                <label>$INFO[ListItem.LastPlayed]</label>
+                                <label2>$LOCALIZE[568]:</label2>
+                                <visible>!String.IsEmpty(ListItem.LastPlayed)</visible>
+                            </item>
+                        </content>
+                    </control>
+                    <control type="image">
+                        <left>-36</left>
+                        <top>310</top>
+                        <width>1188</width>
+                        <height>1</height>
+                        <texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/osd_line_white.png</texture>
+                    </control>
+                    <control type="image">
+                        <left>-36</left>
+                        <top>371</top>
+                        <width>1188</width>
+                        <height>1</height>
+                        <texture colordiffuse="$VAR[ThemeLabelColor]">new_pvr/osd_line_white.png</texture>
+                    </control>
+                    <control type="button">
+                        <left>-43</left>
+                        <top>122</top>
+                        <width>25</width>
+                        <height>25</height>
+                        <texturefocus flipx="true" colordiffuse="grey">arrowright2.png</texturefocus>
+                        <texturenofocus flipx="true" colordiffuse="grey">arrowright2.png</texturenofocus>
+                        <visible>Container(300).HasPrevious</visible>
+                        <animation effect="fade" start="100" end="0" time="0" condition="Container(300).OnPrevious">Conditional</animation>
+                        <include>VisibleFadeAnimation</include>
+                    </control>
+                    <control type="button">
+                        <left>1133</left>
+                        <top>122</top>
+                        <width>25</width>
+                        <height>25</height>
+                        <texturefocus colordiffuse="grey">arrowright2.png</texturefocus>
+                        <texturenofocus colordiffuse="grey">arrowright2.png</texturenofocus>
+                        <visible>Container(300).HasNext</visible>
+                        <animation effect="fade" start="100" end="0" time="0" condition="Container(300).OnNext">Conditional</animation>
+                        <include>VisibleFadeAnimation</include>
+                    </control>
+                    <control type="group">
+                        <left>-36</left>
+                        <top>10</top>
+                        <!-- <control type="button" id="210">
+                        <top>516</top>
+                        <width>634</width>
+                        <texturenofocus />
+                        <disabledcolor>grey</disabledcolor>
+                        <font>font30_title</font>
+                        <align>left</align>
+                        <textoffsetx>36</textoffsetx>
+                        <include>ButtonInfoDialogsCommonValues</include>
+                        <label>[B]$[PVRInfoButtonLabelVar][/B]</label>
+                        <enable>no</enable>
+                        </control> -->
+                        <control type="grouplist" id="9000">
+                            <top>301</top>
+                            <width>1188</width>
+                            <height>60</height>
+                            <onleft>9000</onleft>
+                            <onright>9000</onright>
+                            <onup>300</onup>
+                            <ondown>9001</ondown>
+                            <align>right</align>
+                            <orientation>horizontal</orientation>
+                            <control type="button" id="5">
+                                <description>Switch to Channel</description>
+                                <width>auto</width>
+                                <label>19165</label>
+                            </control>
+                            <control type="button" id="6">
+                                <description>Record</description>
+                                <width>auto</width>
+                                <label />
+                            </control>
+                            <control type="button" id="9">
+                                <description>Timer</description>
+                                <width>auto</width>
+                                <label>19061</label>
+                            </control>
+                            <control type="button" id="8">
+                                <description>Play recording</description>
+                                <width>auto</width>
+                                <label>19687</label>
+                            </control>
+                            <control type="button" id="7">
+                                <description>OK</description>
+                                <width>auto</width>
+                                <label>186</label>
+                            </control>
+                        </control>
+                    </control>
+                </control>
+                <control type="grouplist" id="9001">
+                    <top>371</top>
+                    <width>1190</width>
+                    <height>204</height>
+                    <onup>9000</onup>
+                    <ondown>noop</ondown>
+                    <pagecontrol>70</pagecontrol>
+                    <scrolltime tween="quadratic" easing="out">300</scrolltime>
+                    <control type="group" id="90017">
+                        <width>1190</width>
+                        <height>204</height>
+                        <control type="button" id="900171">
+                            <description>FS Plot</description>
+                            <texturenofocus />
+                            <width>1186</width>
+                            <height>214</height>
+                            <label />
+                            <onup>9000</onup>
+                            <ondown>50</ondown>
+                            <include>ButtonInfoDialogsCommonValues</include>
+                            <onclick>SetProperty(TextViewerHeader,$ESCINFO[ListItem.Title,[B],[/B]],Home)</onclick>
+                            <onclick>SetProperty(TextViewerSubHeader,$ESCINFO[ListItem.EpisodeName,[I],[/I]],Home)</onclick>
+                            <onclick>SetProperty(TextViewerContent,$ESCINFO[ListItem.Plot],Home)</onclick>
+                            <onclick>ActivateWindow(1112)</onclick>
+                        </control>
+                        <control type="textbox" id="4">
+                            <description>Plot</description>
+                            <left>36</left>
+                            <top>3</top>
+                            <width>1112</width>
+                            <height>174</height>
+                            <pagecontrol />
+                            <label>$INFO[ListItem.Plot]</label>
+                            <autoscroll time="3000" delay="6000" repeat="6000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(900171)</autoscroll>
+                            <animation effect="fade" start="0" end="100" time="500" tween="sine" easing="inout">VisibleChange</animation>
+                            <animation effect="fade" start="100" end="78" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(900171)">Conditional</animation>
+                        </control>
+                    </control>
+                </control>
+            </control>
+        </controls>
+    </include>
+    <!-- PVR Info with SkinHelper Support -->
+    <include name="PVRInfo_Mod">
+        <defaultcontrol always="true">9001</defaultcontrol>
+        <include>DialogOpenCloseAnimation</include>
+        <controls>
+            
+            <include>CommonBackground</include>
+            <control type="group">
+                <left>99</left>
+                <top>65</top>
+                <control type="image">
+                    <description>background image</description>
+                    <width>1722</width>
+                    <height>950</height>
+                    <texture border="40">dialogs/default/bg.png</texture>
+                    <animation effect="fade" end="85" condition="true">Conditional</animation>
+                </control>
+                <control type="label" id="2">
+                    <description>header label</description>
+                    <left>30</left>
+                    <top>32</top>
+                    <width>1662</width>
+                    <height>20</height>
+                    <font>font14_title</font>
+                    <label>$LOCALIZE[19047]</label>
+                    <align>center</align>
+                    <textcolor>dialogheader</textcolor>
+                </control>
+                <control type="image">
+                    <left>30</left>
+                    <top>65</top>
+                    <width>1340</width>
+                    <height>780</height>
+                    <texture border="5">dialogs/default/inner.png</texture>
+                    <animation effect="fade" end="85" condition="true">Conditional</animation>
+                    <!--<visible>String.IsEmpty(Window(Home).Property(SkinHelper.PVR.Fanart)) | !System.HasAddon(script.skin.helper.service) | !Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>-->
+                    <visible>!Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                </control>
+                
+                <control type="group">
+                    <!-- Top Section - Plot -->
+                    <control type="group">
+                        <top>90</top>
+                        <left>45</left>
+                        <width>1338</width>
+                        <!-- Label is "ChannelName" when opening this window from Channellist -->
+                        <control type="label">
+                            <width>1338</width>
+                            <height>40</height>
+                            <font>font48</font>
+                            <textcolor>grey</textcolor>
+                            <label>[COLOR $VAR[ThemeLabelColor]][B]$INFO[ListItem.Label][/B][/COLOR]</label>
+                        </control>
+                        <control type="image">
+                            <left>1278</left>
+                            <top>11</top>
+                            <width>40</width>
+                            <height>40</height>
+                            <texture>new_pvr/PVR-IsRecording.png</texture>
+                            <animation effect="fade" start="100" end="40" time="2000" pulse="true" condition="true">Conditional</animation>
+                            <visible>ListItem.IsRecording</visible>
+                        </control>					
+                        <control type="label">
+                            <left>1278</left>
+                            <top>11</top>
+                            <font>IconSmall</font>
+                            <textoffsetx>15</textoffsetx>
+                            <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                            <align>right</align>
+                            <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                            <label></label>
+                            <visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
+                        </control>
+                        <!-- PVR ClearArt -->
+                        <control type="image">
+                            <left>793</left>
+                            <width>525</width>
+                            <height>200</height>
+                            <aspectratio aligny="top">keep</aspectratio>
+                            <texture background="true">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Clearart)]</texture>
+                            <fadetime>FanartCrossfadeTime</fadetime>
+                            <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                        </control>
+                        <control type="label">
+                            <top>65</top>
+                            <width>1338</width>
+                            <height>40</height>
+                            <font>font15</font>
+                            <textcolor>grey2</textcolor>
+                            <label>[I]$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar][/I]</label>
+                        </control>
+                        <control type="image">
+                            <left>-15</left>
+                            <top>85</top>
+                            <width>800</width>
+                            <height>10</height>
+                            <texture border="5">separator2.png</texture>
+                        </control>
+                    </control>
+                    <!-- Top Section - Other info -->
+                    <control type="group">
+                        <top>90</top>
+                        <left>45</left>
+                        <width>1338</width>
+                        <control type="progress">
+                            <top>120</top>
+                            <height>25</height>
+                            <width>600</width>
+                            <info>ListItem.Progress</info>
+                            <texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3,0,3,0">new_pvr/texturebg_border_white.png</texturebg>
+                            <midtexture colordiffuse="$VAR[ThemeLabelColor]" border="0">new_pvr/texturebg_white.png</midtexture>
+                            <visible>Integer.IsGreater(ListItem.Progress,0) | Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+                        </control>
+                        <control type="label">
+                            <top>165</top>
+                            <width>1338</width>
+                            <height>30</height>
+                            <font>font13</font>
+                            <textcolor>grey</textcolor>
+                            <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                            <label>$INFO[ListItem.StartDate], $INFO[ListItem.StartTime] - $INFO[ListItem.EndTime]</label>
+                        </control>
+                        <control type="label">
+                            <top>210</top>
+                            <width>1338</width>
+                            <height>30</height>
+                            <font>font13</font>
+                            <textcolor>grey</textcolor>
+                            <label>[COLOR $VAR[ThemeLabelColor]]$LOCALIZE[180]: [/COLOR]$VAR[ItemDurationVar]   [COLOR $VAR[ThemeLabelColor]]$LOCALIZE[515]: [/COLOR]$INFO[ListItem.Genre]   $VAR[ExpirationDateTimeLabel]</label>
+                        </control>
+                        <control type="grouplist">
+                            <itemgap>30</itemgap>
+                            <orientation>horizontal</orientation>
+                            <top>85</top>
+                            <control type="group">
+                                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.IMDB.Top250))</visible>
+                                <width>165</width>
+                                <height>70</height>
+                                <control type="image">
+                                    <top>25</top>
+                                    <width>75</width>
+                                    <height>35</height>
+                                    <texture>logos/imdb.png</texture>
+                                    <colordiffuse>grey</colordiffuse>
+                                </control>
+                                <control type="label">
+                                    <left>85</left>
+                                    <top>25</top>
+                                    <height>30</height>
+                                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)]</label>
+                                    <font>font14</font>
+                                    <textcolor>grey</textcolor>
+                                </control>
+                            </control>
+                            <control type="group">
+                                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating.Percent))</visible>
+                                <width>150</width>
+                                <height>70</height>
+                                <left>185</left>
+                                <control type="image">
+                                    <top>14</top>
+                                    <width>55</width>
+                                    <height>55</height>
+                                    <texture>$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Image),logos/rottentomatoes/,.png]</texture>
+                                    <colordiffuse>grey</colordiffuse>
+                                </control>
+                                <control type="label">
+                                    <left>60</left>
+                                    <top>25</top>
+                                    <height>30</height>
+                                    <width>110</width>
+                                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating.Percent)]</label>
+                                    <font>font14</font>
+                                    <textcolor>grey</textcolor>
+                                </control>
+                            </control>
+                            <control type="group">
+                                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible>
+                                <width>160</width>
+                                <height>70</height>
+                                <left>285</left>
+                                <control type="image">
+                                    <top>14</top>
+                                    <width>50</width>
+                                    <height>50</height>
+                                    <texture>logos/metacritic.png</texture>
+                                    <colordiffuse>grey</colordiffuse>
+                                </control>
+                                <control type="label">
+                                    <left>60</left>
+                                    <top>25</top>
+                                    <height>30</height>
+                                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating),,%]</label>
+                                    <font>font14</font>
+                                    <textcolor>grey</textcolor>
+                                </control>
+                            </control>
+                        </control>
+                        
+                        <control type="image">
+                            <left>-15</left>
+                            <top>245</top>
+                            <width>1338</width>
+                            <height>10</height>
+                            <texture border="5">separator2.png</texture>
+                        </control>
+                    </control>
+                    <control type="textbox" id="400">
+                        <description>Plot</description>
+                        <left>46</left>
+                        <top>345</top>
+                        <width>1308</width>
+                        <height>502</height>
+                        <font>font14_textbox</font>
+                        <align>justify</align>
+                        <textcolor>grey</textcolor>
+                        <shadowcolor>shadow</shadowcolor>
+                        <pagecontrol>60</pagecontrol>
+                        <autoscroll time="3000" delay="4000" repeat="5000">Skin.HasSetting(Enable.AutoScroll) + !Control.HasFocus(60)</autoscroll>
+                        <label fallback="161">$INFO[ListItem.Plot]</label>
+                    </control>
+                    <control type="scrollbar" id="60">
+                        <left>1370</left>
+                        <top>345</top>
+                        <height>500</height>
+                        <width>8</width>
+                        <onup>PageUp(400)</onup>
+                        <ondown>PageUp(400)</ondown>
+                        <onleft>9001</onleft>
+                        <onright>9001</onright>
+                        <texturesliderbackground>-</texturesliderbackground>
+                        <texturesliderbar colordiffuse="55ffffff" border="1">scrollbar/texturesliderbar2.png</texturesliderbar>
+                        <texturesliderbarfocus border="1">scrollbar/texturesliderbar2.png</texturesliderbarfocus>
+                        <showonepage>false</showonepage>
+                        <orientation>vertical</orientation>
+                    </control>
+                    <!-- right group -->
+                    <control type="group">
+                        <left>1382</left>
+                        <top>90</top>
+                        <control type="image">
+                            <left>-1</left>
+                            <top>-2</top>
+                            <width>312</width>
+                            <height>780</height>
+                            <texture border="5">dialogs/default/inner.png</texture>
+                            <animation effect="fade" end="85" condition="true">Conditional</animation>
+                            <!--<visible>String.IsEmpty(Window(Home).Property(SkinHelper.PVR.Fanart)) | !System.HasAddon(script.skin.helper.service) | !Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>-->
+                            <visible>!System.HasAddon(script.skin.helper.service) | !Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                        </control>
+                        
+                        <!-- ChannelName, if no Icon -->
+                        <control type="label">
+                            <description>ChannelName</description>
+                            <width>300</width>
+                            <height>120</height>
+                            <label>[B]$INFO[ListItem.ChannelName][/B]</label>
+                            <height>60</height>
+                            <font>font14</font>
+                            <textcolor>grey</textcolor>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <visible>String.IsEmpty(Window(Home).Property(SkinHelper.PVR.ChannelLogo)) + String.IsEmpty(ListItem.ActualIcon)</visible>
+                        </control>
+                        <!-- ChannelIcon -->
+                        <control type="image">
+                            <description>ChannelIcon</description>
+                            <width>300</width>
+                            <height>120</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture background="true">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ChannelLogo)]</texture>
+<!--                             <texture background="true">$VAR[PVRChannelIconVar]</texture> -->
+                            <bordersize>1</bordersize>
+                            <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                        </control>
+                        <!-- PVR Discart -->
+                        <control type="group">
+                            <!-- SkinHelper DiscArt -->
+                            <control type="image">
+                                <top>150</top>
+                                <width>300</width>
+                                <height>300</height>
+                                <aspectratio aligny="top">keep</aspectratio>
+                                <texture background="true">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.DiscArt)]</texture>
+                                <animation effect="slide" delay="2500" start="0,200" end="0,0" time="800" tween="quadratic">WindowOpen</animation>
+                                <animation delay="6000" effect="rotate" end="-360" center="auto" time="10000" loop="true" reversible="false" condition="true">Conditional</animation>
+                                <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Discart)) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster))</visible>
+                            </control>
+                            <!-- Fake DiscArt -->
+                            <control type="group">
+                                <top>150</top>
+                                <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                                <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Discart)) + [!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Landscape)) | !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster))]</visible>
+                                <control type="image">
+                                    <width>300</width>
+                                    <height>300</height>
+                                    <aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
+                                    <texture background="true" diffuse="homewidgets/cdart-mask.png">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Landscape)]</texture>
+                                    <animation effect="slide" delay="2500" start="0,200" end="0,0" time="800" tween="quadratic">WindowOpen</animation>
+                                    <animation delay="6000" effect="rotate" end="-360" center="auto" time="10000" loop="true" reversible="false" condition="true">Conditional</animation>
+                                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Landscape))</visible>
+                                </control>
+                                <control type="image">
+                                    <width>300</width>
+                                    <height>300</height>
+                                    <aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
+                                    <texture background="true" diffuse="homewidgets/cdart-mask.png">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Poster)]</texture>
+                                    <animation effect="slide" delay="2500" start="0,200" end="0,0" time="800" tween="quadratic">WindowOpen</animation>
+                                    <animation delay="6000" effect="rotate" end="-360" center="auto" time="10000" loop="true" reversible="false" condition="true">Conditional</animation>
+                                    <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Landscape))</visible>
+                                </control>
+                                <control type="image">
+                                    <width>300</width>
+                                    <height>300</height>
+                                    <aspectratio aligny="top" scalediffuse="false">scale</aspectratio>
+                                    <texture background="true">homewidgets/cdarttop.png</texture>
+                                    <animation effect="slide" delay="2500" start="0,200" end="0,0" time="800" tween="quadratic">WindowOpen</animation>
+                                    <animation delay="6000" effect="rotate" end="-360" center="auto" time="10000" loop="true" reversible="false" condition="true">Conditional</animation>
+                                    <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Discart)) + [!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Landscape)) | !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster))]</visible>
+                                </control>
+                            </control>
+                        </control>
+                        <!-- Poster, Thumb -->
+                        <control type="image">
+                            <top>300</top>
+                            <width>300</width>
+                            <height>470</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture background="true">$VAR[PVRPosterOrThumbVar]</texture>
+                            <bordertexture border="5">dialogs/default/inner.png</bordertexture>
+                            <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                        </control>
+                        
+                    </control>
+                    <control type="grouplist" id="9001">
+                        <top>858</top>
+                        <left>30</left>
+                        <width>1660</width>
+                        <onup>60</onup>
+                        <onleft>9001</onleft>
+                        <onright>9001</onright>
+                        <ondown>60</ondown>
+                        <height>60</height>
+                        <itemgap>10</itemgap>
+                        <align>center</align>
+                        <defaultcontrol>5</defaultcontrol>
+                        <orientation>horizontal</orientation>
+                        <control type="button" id="440">
+                            <description>Trailer</description>
+                            <width>310</width>
+                            <!--<label>$LOCALIZE[31114]</label>-->
+                            <label>Trailer</label>
+                            <onclick>Action(close)</onclick>
+                            <onclick>RunScript(script.extendedinfo,info=youtubebrowser,id=$INFO[ListItem.Label])</onclick>
+                            <visible>Window.IsVisible(PVRGuideInfo) + System.hasAddon(script.extendedinfo)</visible>
+                        </control>
+                        <control type="button" id="4">
+                            <description>Find similar</description>
+                            <align>center</align>
+                            <width>310</width>
+                            <label>$LOCALIZE[19003]</label>
+                            <visible>Window.IsVisible(PVRGuideInfo)</visible>
+                        </control>
+                        <control type="button" id="8">
+                            <description>Play recording</description>
+                            <align>center</align>
+                            <width>310</width>
+                            <label>$LOCALIZE[19687]</label>
+                            <visible>Window.IsVisible(PVRRecordingInfo)</visible>
+                        </control>
+                        <control type="button" id="6">
+                            <description>Record</description>
+                            <align>center</align>
+                            <width>310</width>
+                            <label>-</label>
+                            <visible>Window.IsVisible(PVRGuideInfo)</visible>
+                        </control>
+                        <control type="button" id="9">
+                            <description>Timer</description>
+                            <align>center</align>
+                            <width>310</width>
+                            <label>$LOCALIZE[19061]</label>
+                            <visible>Window.IsVisible(PVRGuideInfo)</visible>
+                        </control>
+                        <control type="button" id="5">
+                            <description>Switch to Channel</description>
+                            <align>center</align>
+                            <width>310</width>
+                            <label>$LOCALIZE[19165]</label>
+                            <visible>Window.IsVisible(PVRGuideInfo) + !String.IsEqual(VideoPlayer.ChannelName,ListItem.ChannelName)</visible>
+                        </control>
+                        <!--<control type="button" id="7">
+                        <description>OK</description>
+                        <align>center</align>
+                        <width>310</width>
+                        <label>$LOCALIZE[186]</label>
+                        </control>-->
+                    </control>
+                </control>
+            </control>
+        </controls>
+    </include>
+</includes>

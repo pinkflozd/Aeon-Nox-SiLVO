@@ -400,7 +400,7 @@
 							<font>font_musicviz</font>
 							<align>right</align>
 							<shadowcolor>black</shadowcolor>
-							<label>$INFO[MusicPlayer.Artist]</label>
+                            <label>$VAR[MusicArtistVar]</label>
 							<scroll>true</scroll>
 							<scrollsuffix>  -  </scrollsuffix>
 							<visible>[String.IsEmpty(Player.Art(artist.clearlogo)) + String.IsEmpty(Player.Art(clearlogo))] | Skin.HasSetting(Disable.MusicVizLogo)</visible>
@@ -421,11 +421,13 @@
 							<height>20</height>
 							<align>right</align>
 							<font>font30</font>
-							<label>$INFO[MusicPlayer.TrackNumber,,. ]$INFO[Player.Title,[COLOR white],[/COLOR]]</label>
+                            <label>$INFO[MusicPlayer.TrackNumber,,. ]$VAR[MusicTitleVar,[COLOR white],[/COLOR]]</label>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<shadowcolor>black</shadowcolor>
 							<scroll>true</scroll>
 						</control>
+                        
+                        
 						<control type="label">
 							<left>30</left>
 							<top>140</top>
@@ -433,7 +435,7 @@
 							<height>20</height>
 							<align>right</align>
 							<font>font30</font>
-							<label>$INFO[MusicPlayer.Album]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
+                            <label>$VAR[MusicAlbumVar]$INFO[MusicPlayer.DiscNumber, - $LOCALIZE[427]: ,][COLOR $VAR[ThemeLabelColor]]$INFO[MusicPlayer.Year, [,]][/COLOR]</label>
 							<shadowcolor>black</shadowcolor>
 							<scroll>true</scroll>
 							<scrollsuffix>  -  </scrollsuffix>
@@ -445,7 +447,7 @@
 							<height>18</height>
 							<align>right</align>
 							<font>font30</font>
-							<label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
+                            <label>[COLOR=white]$INFO[Player.Time][/COLOR]$INFO[Player.Duration, / [COLOR=white],[/COLOR] ]</label>
 							<textcolor>$VAR[ThemeLabelColor]</textcolor>
 							<shadowcolor>black</shadowcolor>
 						</control>

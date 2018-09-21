@@ -112,8 +112,11 @@
 						<item>
 							<label>$LOCALIZE[31241]</label>
 							<onclick>Container.SetViewMode(501)</onclick>
-							<visible>Window.IsActive(programs)</visible>
+                            <visible>Window.IsActive(programs) | Window.IsActive(games)</visible>
 							<visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher) + !Skin.HasSetting(Disable.LowListView)</visible>
+                            
+                            <visible>String.Contains(Container.FolderPath,plugin.program.iagl) + !Skin.HasSetting(Disable.LowListView)</visible>
+                            
 						</item>
 						<item>
 							<label>$LOCALIZE[31242]</label>
@@ -154,8 +157,8 @@
 						<item>
 							<label>$LOCALIZE[31079]</label>
 							<onclick>Container.SetViewMode(57)</onclick>
-							<visible>Window.IsActive(programs)</visible>
-							<visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher) + !Skin.HasSetting(Disable.LowListView)</visible>
+                            <visible>Window.IsActive(programs) | Window.IsActive(games)</visible>
+                            <visible>[String.Contains(Container.FolderPath,plugin.program.advanced.launcher) |  String.Contains(Container.FolderPath,plugin.program.iagl)] + !Skin.HasSetting(Disable.ShiftView)</visible>
 						</item>
 						<item>
 							<label>$LOCALIZE[31243]</label>
@@ -274,6 +277,31 @@
 							<onclick>Container.SetViewMode(505)</onclick>
 							<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)] + !Skin.HasSetting(Disable.PanelView)</visible>
 						</item>
+                        <!-- ########################################################## -->
+                        <!-- ########################################################## -->
+                        <!-- ########################################################## -->
+                        <!-- new: GameFlix -->
+                        <item>
+                            <label>GameFlixPoster</label>
+                            <onclick>Container.SetViewMode(801)</onclick>
+                            <visible>Window.IsActive(programs) | Window.IsActive(games) | String.Contains(Container.FolderPath,plugin.program.iagl)</visible>
+                            <visible>!Skin.HasSetting(Disable.MyFlixView)</visible>
+                        </item>
+                        <item>
+                            <label>GameFlixWide</label>
+                            <onclick>Container.SetViewMode(802)</onclick>
+                            <visible>Window.IsActive(programs) | Window.IsActive(games) | String.Contains(Container.FolderPath,plugin.program.iagl)</visible>
+                            <visible>!Skin.HasSetting(Disable.MyFlixView)</visible>
+                        </item>
+                        <item>
+                            <label>GameFlixSquare</label>
+                            <onclick>Container.SetViewMode(803)</onclick>
+                            <visible>Window.IsActive(programs) | Window.IsActive(games) | String.Contains(Container.FolderPath,plugin.program.iagl)</visible>
+                            <visible>!Skin.HasSetting(Disable.MyFlixView)</visible>
+                        </item>
+                        <!-- ########################################################## -->
+                        <!-- ########################################################## -->
+                        <!-- ########################################################## -->
 					</content>
 				</control>
 				<control type="button" id="9012">

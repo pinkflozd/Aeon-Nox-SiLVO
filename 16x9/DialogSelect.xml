@@ -21,7 +21,7 @@
 			<width>1030</width>
 			<height>590</height>
 			<texture border="40">dialogs/default/bg.png</texture>
-			<visible>!Control.IsVisible(6) + !Control.IsVisible(5)</visible>
+            <visible>[!Control.IsVisible(6) + !Control.IsVisible(5)] | Window.IsActive(gameviewmode)</visible>
 		</control>
 		<control type="image">
 			<left>293</left>
@@ -30,6 +30,11 @@
 			<texture border="40">dialogs/default/bg.png</texture>
 			<visible>!Control.IsVisible(6) + Control.IsVisible(5)</visible>
 		</control>
+        
+        <include condition="Window.IsActive(gamevideofilter)">GameDialogSelectFilterLayout</include>
+        <include condition="Window.IsActive(gameviewmode)">GameDialogSelectViewLayout</include>
+        <include condition="Window.IsActive(gamevideorotation)">GameDialogSelectViewLayout</include>
+        
 		<control type="group">
 			<visible>!Control.IsVisible(3)</visible>
 			<left>17</left>

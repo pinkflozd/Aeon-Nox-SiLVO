@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<window type="dialog" id="1101">
+    <defaultcontrol always="true">11000</defaultcontrol>
+    <include>Animation_DialogPopupOpenClose</include>
+    <controls>
+        <control type="group">
+            <visible>!Window.IsActive(DialogSettings.xml) + !Window.IsActive(DialogSlider.xml) + !Window.IsActive(GameVideoFilter) + !Window.IsActive(GameViewMode) + !Window.IsActive(GameControllers) + !Window.IsActive(GameVideoRotation)</visible>
+            <animation effect="slide" end="0,-120" time="300" tween="quadratic" condition="Window.IsVisible(selectdialog)">Conditional</animation>
+            <animation effect="slide" start="0,-120" end="0,0" time="300" tween="quadratic">WindowOpen</animation>
+            <animation effect="slide" end="0,-120" start="0,0" time="300" tween="quadratic">WindowClose</animation>
+            <control type="group" id="11000">
+                <left>660</left>
+                <top>570</top>
+                <control type="image">
+                    <height>470</height>
+                    <width>700</width>
+                    <texture colordiffuse="E6FFFFFF" border="1,1,1,40">topbar.png</texture>
+                </control>
+                <control type="list" id="14100">
+                    <defaultcontrol always="true">14101</defaultcontrol>
+                    <visible>String.IsEqual(window(home).Property(settingslist_content),games)</visible>
+                    <width>700</width>
+                    <height>530</height>
+                    <itemgap>0</itemgap>
+                    <onup>14100</onup>
+                    <ondown>14100</ondown>
+                    <orientation>vertical</orientation>
+                    <itemlayout width="688" height="75">
+                        <control type="image">
+                            <left>8</left>
+                            <top>8</top>
+                            <width>64</width>
+                            <height>64</height>
+                            <info>ListItem.Icon</info>
+                        </control>
+                        <control type="label">
+                            <left>80</left>
+                            <width>600</width>
+                            <height>75</height>
+                            <info>ListItem.Label</info>
+                            <font>font13</font>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                        </control>
+                        <control type="label">
+                            <right>20</right>
+                            <width>600</width>
+                            <height>75</height>
+                            <info>ListItem.Label2</info>
+                            <font>font13</font>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <textcolor>grey</textcolor>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="700" height="75">
+                        <control type="image">
+                            <texture colordiffuse="$VAR[HighlightBarColor]">listselect_fo.png</texture>
+                            <include>VisibleFadeAnimation</include>
+                            <visible>Control.HasFocus(14100)</visible>
+                        </control>
+                        <control type="image">
+                            <left>8</left>
+                            <top>8</top>
+                            <width>64</width>
+                            <height>64</height>
+                            <info>ListItem.Icon</info>
+                        </control>
+                        <control type="label">
+                            <left>80</left>
+                            <width>600</width>
+                            <height>75</height>
+                            <info>ListItem.Label</info>
+                            <font>font13</font>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                        </control>
+                        <control type="label">
+                            <right>20</right>
+                            <width>600</width>
+                            <height>75</height>
+                            <info>ListItem.Label2</info>
+                            <font>font13</font>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <textcolor>grey</textcolor>
+                        </control>
+                    </focusedlayout>
+                    <content>
+                        <item id="14101">
+                            <description>Video filter button</description>
+                            <width>700</width>
+                            <icon>osd/buttons/OSDChannelListFO.png</icon>
+                            <label>$LOCALIZE[35225]</label>
+                            <onclick>ActivateWindow(GameVideoFilter)</onclick>
+                        </item>
+                        <item id="14102">
+                            <description>Stretch mode button</description>
+                            <width>700</width>
+                            <icon>osd/buttons/OSDGameStretchFO.png</icon>
+                            <label>$LOCALIZE[35233]</label>
+                            <onclick>ActivateWindow(GameViewMode)</onclick>
+                        </item>
+                        <item id="14106">
+                            <description>Video rotation button</description>
+                            <width>700</width>
+                            <icon>osd/buttons/OSDGameRotationFO.png</icon>
+                            <label>$LOCALIZE[35227]</label>
+                            <onclick>ActivateWindow(GameVideoRotation)</onclick>
+                        </item>
+                        <item id="14104">
+                            <description>Volume button</description>
+                            <width>700</width>
+                            <icon>osd/buttons/OSDAudioFO.png</icon>
+                            <label>$LOCALIZE[13376]</label>
+                            <label2>[COLOR grey]Select + Right Stick[/COLOR]</label2>
+                            <onclick>ActivateWindow(GameVolume)</onclick>
+                        </item>
+                        <item id="14103">
+                            <description>Controller settings button</description>
+                            <width>700</width>
+                            <icon>osd/buttons/OSDGameSettingsFO.png</icon>
+                            <label>$LOCALIZE[35234]</label>
+                            <onclick>ActivateWindow(GameControllers)</onclick>
+                        </item>
+                        <item id="14105">
+                            <description>Advanced settings</description>
+                            <width>700</width>
+                            <icon>osd/buttons/OSDSettingsFO.png</icon>
+                            <label>$LOCALIZE[35226]</label>
+                            <onclick>ActivateWindow(GameAdvancedSettings)</onclick>
+                        </item>
+                    </content>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<variable name="MusicArtistVar">
+        <value condition="Player.IsInternetStream + !String.IsEmpty(Window(12006).Property(srh.Artist))">$INFO[Window(12006).Property(srh.Artist)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.Player.Artist))">$INFO[Window(home).Property(SkinHelper.Player.Artist)]</value>
+		<value condition="Player.IsInternetStream + String.IsEmpty(Window(home).Property(SkinHelper.Player.Artist))">$INFO[Player.offset.Title]</value>
+<!--         $INFO[Window(home).Property(SkinHelper.Player.Artist)] ggg $INFO[Window(12006).Property(srh.Artist)]  -->
+		<value>$INFO[MusicPlayer.Artist]</value>
+	</variable>
+	<variable name="MusicTitleVar">
+        <value condition="Player.IsInternetStream + !String.IsEmpty(Window(12006).Property(srh.Track))">$INFO[Window(12006).Property(srh.Track)]</value>
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.Player.Title))">### $INFO[Window(home).Property(SkinHelper.Player.Title)]</value>
+		<value>+++ $INFO[Player.Title]</value>
+	</variable>
+	<variable name="MusicAlbumVar">
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.Player.Album))">$INFO[Window(home).Property(SkinHelper.Player.Album)]</value>
+		<value>$INFO[MusicPlayer.Album]</value>
+	</variable>
+	<variable name="MusicYearVar">
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.Player.Year))">$INFO[Window(home).Property(SkinHelper.Player.Year)]</value>
+		<value>$INFO[MusicPlayer.Year]</value>
+	</variable>
+	<variable name="MusicCDArtVar">
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.DiscArt))">$INFO[Window(Home).Property(SkinHelper.Player.Art.DiscArt)]</value>
+		<value>$INFO[Player.FolderPath]cdart.png</value>
+	</variable>
+	<variable name="MusicCoverArtVar">
+		<!-- on Streams, always look for CoverArt -->
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.AlbumThumb)) + Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Art.AlbumThumb)]</value>
+		<!-- if no CoverArt, then look for it -->
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.AlbumThumb)) + String.IsEmpty(Player.Art(thumb)) + Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Art.AlbumThumb)]</value>
+		<value>$INFO[Player.Art(thumb)]</value>
+	</variable>
+	<variable name="MusicCDLabelUpperVar">
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.Player.Album))  + !String.IsEmpty(Window(home).Property(SkinHelper.Player.Artist))">$INFO[Window(home).Property(SkinHelper.Player.Album), ,]</value>
+		<value condition="String.IsEmpty(Window(home).Property(SkinHelper.Player.Album)) + !String.IsEmpty(Window(home).Property(SkinHelper.Player.Artist)) + !String.IsEmpty(Window(home).Property(SkinHelper.Player.Title))">$INFO[Window(home).Property(SkinHelper.Player.Artist), ,]</value>
+		<value>$INFO[Player.Album, ,]</value>
+	</variable>
+	<variable name="MusicCDLabelLowerVar">
+		<value condition="!String.IsEmpty(Window(home).Property(SkinHelper.Player.Album)) + !String.IsEmpty(Window(home).Property(SkinHelper.Player.Artist))">$INFO[Window(home).Property(SkinHelper.Player.Artist), ,]</value>
+		<value condition="String.IsEmpty(Window(home).Property(SkinHelper.Player.Album)) + !String.IsEmpty(Window(home).Property(SkinHelper.Player.Artist)) + !String.IsEmpty(Window(home).Property(SkinHelper.Player.Title))">$INFO[Window(home).Property(SkinHelper.Player.Title), ,]</value>
+		<value condition="String.IsEmpty(Window(home).Property(SkinHelper.Player.Album)) + !String.IsEmpty(Window(home).Property(SkinHelper.Player.Artist))">$INFO[Window(home).Property(SkinHelper.Player.Artist), ,]</value>
+		<value>$INFO[MusicPlayer.Artist, ,]</value>
+	</variable>
+</includes>

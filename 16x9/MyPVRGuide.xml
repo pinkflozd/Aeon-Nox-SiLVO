@@ -11,6 +11,8 @@
 		<include>CommonBackground</include>
 		<include condition="String.IsEmpty(Skin.String(LiveTV.EpgViewType))">EpgTimelineStandard</include>
 		<include condition="String.IsEqual(Skin.String(LiveTV.EpgViewType),1)">EpgTimelineMinified</include>
+        <include condition="String.IsEqual(Skin.String(LiveTV.EpgViewType),2) + Player.HasVideo">EpgTimelineMinified</include>
+        <include condition="String.IsEqual(Skin.String(LiveTV.EpgViewType),2) + !Player.HasVideo">EpgTimelineStandard</include>
 		<control type="label" id="29">
 			<font />
 			<include>HiddenObject</include>

@@ -5,7 +5,7 @@
 	<onload>ClearProperty(MediaMenu,Home)</onload>
 	<onunload>ClearProperty(MediaMenu,Home)</onunload>
 	<onunload>ClearProperty(Window.HasSettings,Home)</onunload>
-	<views>50</views>
+	<views>50,51</views>
 	<menucontrol>9051</menucontrol>
 	<controls>
 		<include>CommonBackground</include>
@@ -29,7 +29,9 @@
 				<height>904</height>
 				<texture border="40">listpanel_back.png</texture>
 			</control>
-			<control type="list" id="50">
+            
+            <!-- Disabled for new view -->
+<!--			<control type="list" id="50">
 				<top>180</top>
 				<width>1020</width>
 				<height>840</height>
@@ -118,8 +120,216 @@
 						<texture>$VAR[ListItem.Overlay]</texture>
 					</control>
 				</focusedlayout>
-			</control>
-			<!-- Single Recordings Group - 2 Boxes -->
+			</control>-->
+
+            <control type="fixedlist" id="50">
+                <focusposition>3</focusposition>
+                <movement>3</movement>
+                <top>180</top>
+                <width>1020</width>
+                <height>840</height>
+                <onleft>SetProperty(MediaMenu,True,home)</onleft>
+                <onleft>SetFocus(9050)</onleft>
+                <onright>72</onright>
+                <onup>50</onup>
+                <ondown>50</ondown>
+                <viewtype label="535">list</viewtype>
+                <pagecontrol>72</pagecontrol>
+                <scrolltime tween="quadratic">200</scrolltime>
+                <itemlayout height="120" width="1140">
+                    <control type="image">
+                        <top>32</top>
+                        <width>1020</width>
+                        <height>30</height>
+                        <texture border="1">separator2.png</texture>
+                    </control>
+                    <!-- List Thumb -->
+                    <control type="image">
+                        <left>-15</left>
+                        <top>4</top>
+                        <width>105</width>
+                        <height>112</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.ActualIcon]</texture>
+                        <visible>!Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                    </control>
+                    <control type="image">
+                        <left>8</left>
+                        <top>4</top>
+                        <width>170</width>
+                        <height>112</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true">http://localhost:52307/getpvrthumb&amp;fallback=$ESCINFO[ListItem.ActualIcon]&amp;title=$ESCINFO[ListItem.Label]&amp;type=landscape</texture>
+                        <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                    </control>
+                    <!-- Label or Episodename -->
+                    <control type="group">
+                        <control type="label">
+                            <left>196</left>
+                            <width>850</width>
+                            <height>120</height>
+                            <font>font15</font>
+                            <textcolor>grey2</textcolor>
+                            <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>>>> $INFO[ListItem.Label]</label>
+                            <visible>ListItem.IsFolder</visible>
+                            <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+                        </control>
+                        <control type="label">
+                            <left>186</left>
+                            <top>12</top>
+                            <width>750</width>
+                            <height>35</height>
+                            <font>font15</font>
+                            <textcolor>white</textcolor>
+                            <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>$INFO[ListItem.Title]</label>
+                            <visible>!ListItem.IsFolder</visible>
+                            <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+                        </control>
+                        <control type="label">
+                            <left>186</left>
+                            <top>60</top>
+                            <width>860</width>
+                            <height>35</height>
+                            <font>font13</font>
+                            <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                            <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar]</label>
+                            <visible>!ListItem.IsFolder</visible>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <top>60</top>
+                        <left>50</left>
+                        <width>890</width>
+                        <height>35</height>
+                        <font>font12</font>
+                        <align>right</align>
+                        <textcolor>grey2</textcolor>
+                        <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Date]</label>
+                        <visible>!ListItem.IsFolder</visible>
+                    </control>
+                    <control type="image">
+                        <left>946</left>
+                        <width>64</width>
+                        <height>64</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$VAR[ListItem.Overlay]</texture>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="120" width="1140">
+                    <control type="image">
+                        <top>32</top>
+                        <width>1020</width>
+                        <height>30</height>
+                        <texture border="1">separator2.png</texture>
+                    </control>
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <width>1020</width>
+                        <height>120</height>
+                        <texture colordiffuse="$VAR[HighlightBarColor]" border="4">listselect_fo.png</texture>
+                        <visible>Control.HasFocus(50)</visible>
+                        <include>VisibleFadeAnimation</include>
+                    </control>
+                    <!-- List Thumb -->
+                    <control type="image">
+                        <left>-15</left>
+                        <top>4</top>
+                        <width>105</width>
+                        <height>112</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.ActualIcon]</texture>
+                        <visible>!System.HasAddon(script.skin.helper.service) | !Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                    </control>
+                    <control type="image">
+                        <left>8</left>
+                        <top>4</top>
+                        <width>170</width>
+                        <height>112</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true">http://localhost:52307/getpvrthumb&amp;fallback=$ESCINFO[ListItem.ActualIcon]&amp;title=$ESCINFO[ListItem.Label]&amp;type=landscape</texture>
+                        <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
+                    </control>
+                    <!-- Label or Episodename -->
+                    <control type="group">
+                        <control type="label">
+                            <left>196</left>
+                            <width>750</width>
+                            <height>120</height>
+                            <font>font15</font>
+                            <textcolor>white</textcolor>
+                            <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>>>> $INFO[ListItem.Label]</label>
+                            <visible>ListItem.IsFolder</visible>
+                            <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+                        </control>
+                        <control type="label">
+                            <left>186</left>
+                            <top>12</top>
+                            <width>750</width>
+                            <height>35</height>
+                            <font>font15</font>
+                            <textcolor>white</textcolor>
+                            <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>$INFO[ListItem.Title]</label>
+                            <visible>!ListItem.IsFolder</visible>
+                            <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+                        </control>
+                        <control type="label">
+                            <left>186</left>
+                            <top>60</top>
+                            <width>860</width>
+                            <height>35</height>
+                            <font>font13</font>
+                            <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                            <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <label>$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar]</label>
+                            <visible>!ListItem.IsFolder</visible>
+                            <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <top>60</top>
+                        <left>50</left>
+                        <width>890</width>
+                        <height>35</height>
+                        <font>font12</font>
+                        <align>right</align>
+                        <textcolor>grey</textcolor>
+                        <selectedcolor>$VAR[ThemeLabelColor]</selectedcolor>
+                        <aligny>center</aligny>
+                        <label>$INFO[ListItem.Date]</label>
+                        <animation effect="fade" start="100" end="70" time="300" tween="sine" easing="inout" condition="!Control.HasFocus(50)">Conditional</animation>
+                        <visible>!ListItem.IsFolder</visible>
+                    </control>
+                    <control type="image">
+                        <left>946</left>
+                        <width>64</width>
+                        <height>64</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture>$VAR[ListItem.Overlay]</texture>
+                    </control>
+                </focusedlayout>
+            </control>
+            
+            <!-- Right Side - Single Recordings Group - 2 Boxes -->
 			<control type="group">
 				<visible>!ListItem.IsFolder</visible>
 				<top>450</top>
@@ -137,19 +347,28 @@
 						<height>318</height>
 						<texture border="40">listpanel_back.png</texture>
 					</control>
-					<control type="group">
-						<top>20</top>
-						<left>20</left>
-						<width>325</width>
-						<height>272</height>
-						<control type="image">
-							<aspectratio align="left" aligny="center">keep</aspectratio>
-							<texture background="true" fallback="DefaultVideo.png">$INFO[Container(50).ListItem.Icon]</texture>
-							<fadetime>IconCrossfadeTime</fadetime>
-							<bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
-							<bordersize>20</bordersize>
-						</control>
-					</control>
+                    <control type="image">
+                        <top>20</top>
+                        <left>20</left>
+                        <width>325</width>
+                        <height>272</height>
+                        <aspectratio align="left" aligny="center">keep</aspectratio>
+                        <texture background="true" fallback="DefaultVideo.png">$INFO[Container(50).ListItem.Icon]</texture>
+                        <fadetime>IconCrossfadeTime</fadetime>
+                        <bordertexture border="20">thumbs/thumb_shadow.png</bordertexture>
+                        <bordersize>20</bordersize>
+                        <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearArt)</visible>
+                    </control>
+                    <control type="image">
+                        <top>40</top>
+                        <left>40</left>
+                        <width>285</width>
+                        <height>242</height>
+                        <aspectratio align="left" aligny="center">keep</aspectratio>
+                        <texture background="true">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ClearArt)]</texture>
+                        <fadetime>IconCrossfadeTime</fadetime>
+                        <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearArt)</visible>
+                    </control>
 					<!-- TopBar Label -->
 					<control type="label">
 						<top>30</top>
@@ -164,10 +383,20 @@
 						<width>360</width>
 						<left>340</left>
 						<height>262</height>
-						<font>font12</font>
+						<font>font13</font>
 						<wrapmultiline>true</wrapmultiline>
-						<label>$INFO[ListItem.Date][CR][CR]$INFO[ListItem.Duration(mins)]</label>
+                        <label>$INFO[ListItem.Date,[COLOR grey2]$LOCALIZE[552]:[/COLOR] ,[CR]]$VAR[ItemDurationVar,[COLOR grey2]$LOCALIZE[180]:[/COLOR] ,[CR]]$VAR[ExpirationDateTimeLabel]</label>
 					</control>
+                    <control type="progress">
+                        <left>340</left>
+                        <top>230</top>
+                        <height>20</height>
+                        <width>370</width>
+                        <info>ListItem.Progress</info>
+                        <texturebg colordiffuse="$VAR[ThemeLabelColor]" border="3,0,3,0">new_pvr/texturebg_border_white.png</texturebg>
+                        <midtexture colordiffuse="$VAR[ThemeLabelColor]" border="0">new_pvr/texturebg_white.png</midtexture>
+                        <visible>Integer.IsGreater(ListItem.PercentPlayed,0)</visible>
+                    </control>
 				</control>
 				<!-- Plot -->
 				<control type="group">
@@ -191,15 +420,16 @@
 							<width>700</width>
 							<height>40</height>
 							<font>font24_title</font>
-							<label>[B][COLOR $VAR[ThemeLabelColor]]$INFO[Container(50).ListItem.Title][/COLOR][/B]</label>
+							<label>[B]$INFO[Container(50).ListItem.Title][/B]</label>
 						</control>
-						<control type="label">
-							<width>700</width>
-							<height>34</height>
-							<label>[COLOR $VAR[ThemeLabelColor]]$INFO[Container(50).ListItem.PlotOutline][/COLOR]</label>
-							<font>font12</font>
-							<visible>!String.IsEmpty(Container(50).ListItem.PlotOutline)</visible>
-						</control>
+                        
+                        <control type="label">
+                            <width>700</width>
+                            <height>40</height>
+                            <label>[COLOR $VAR[ThemeLabelColor]]$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar][/COLOR]</label>
+                            <font>font24</font>
+                        </control>
+                        
 						<control type="label">
 							<width>700</width>
 							<height>34</height>
@@ -216,7 +446,7 @@
 					</control>
 				</control>
 			</control>
-			<!-- RecordingsFolder -->
+			<!-- Right Side - RecordingsFolder -->
 			<control type="group">
 				<visible>ListItem.IsFolder</visible>
 				<top>148</top>
@@ -248,23 +478,43 @@
 							<width>580</width>
 							<height>362</height>
 							<orientation>vertical</orientation>
-							<focusedlayout height="40" width="560">
+							<focusedlayout height="80" width="560">
 								<control type="label">
 									<left>10</left>
-									<height>50</height>
+									<height>30</height>
 									<width>580</width>
-									<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Duration(mins)][/COLOR]  -  $INFO[ListItem.Label]</label>
+                                    <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                                    <label>[COLOR white]$INFO[ListItem.Label][/COLOR]$VAR[ItemDurationVar, - ,]</label>
 									<font>font12</font>
 								</control>
+                                <control type="label">
+                                    <top>30</top>
+                                    <left>10</left>
+                                    <height>20</height>
+                                    <width>580</width>
+                                    <label>[I]$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar][/I]</label>
+                                    <textcolor>grey2</textcolor>
+                                    <font>font12</font>
+                                </control>
 							</focusedlayout>
-							<itemlayout height="40" width="560">
-								<control type="label">
-									<left>10</left>
-									<height>50</height>
-									<width>580</width>
-									<label>[COLOR $VAR[ThemeLabelColor]]$INFO[ListItem.Duration(mins)][/COLOR]  -  $INFO[ListItem.Label]</label>
-									<font>font12</font>
-								</control>
+							<itemlayout height="80" width="560">
+                                <control type="label">
+                                    <left>10</left>
+                                    <height>30</height>
+                                    <width>580</width>
+                                    <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                                    <label>[COLOR white]$INFO[ListItem.Label][/COLOR]$VAR[ItemDurationVar, - ,]</label>
+                                    <font>font12</font>
+                                </control>
+                                <control type="label">
+                                    <top>35</top>
+                                    <left>10</left>
+                                    <height>20</height>
+                                    <width>580</width>
+                                    <label>[I]$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar][/I]</label>
+                                    <textcolor>grey2</textcolor>
+                                    <font>font12</font>
+                                </control>
 							</itemlayout>
 							<content>$INFO[ListItem.FolderPath]</content>
 						</control>

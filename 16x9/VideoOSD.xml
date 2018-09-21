@@ -269,6 +269,7 @@
 						<font />
 						<onclick>PlayerControl(Previous)</onclick>
 						<oninfo>Dialog.Close(all,true)</oninfo>
+                        <visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 					</control>
 					<control type="button" id="803">
 						<textoffsety>60</textoffsety>
@@ -280,6 +281,7 @@
 						<font />
 						<onclick>PlayerControl(Next)</onclick>
 						<oninfo>Dialog.Close(all,true)</oninfo>
+                        <visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 					</control>
 					<control type="button" id="804">
 						<texturefocus>osd/buttons/OSDRewindFO.png</texturefocus>
@@ -306,6 +308,7 @@
 						<onclick>PlayerControl(Play)</onclick>
 						<oninfo>Dialog.Close(all,true)</oninfo>
 						<visible>Player.PauseEnabled</visible>
+                        <visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 					</control>
 					<control type="button" id="805">
 						<texturefocus>osd/buttons/OSDStopFO.png</texturefocus>
@@ -316,6 +319,7 @@
 						<font />
 						<onclick>PlayerControl(Stop)</onclick>
 						<oninfo>Dialog.Close(all,true)</oninfo>
+                        <visible>!Skin.HasSetting(Disable.PlayerControlButtons)</visible>
 					</control>
 					<control type="button" id="806">
 						<texturefocus>osd/buttons/OSDForwardFO.png</texturefocus>

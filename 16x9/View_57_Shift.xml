@@ -301,7 +301,7 @@
 				<preloaditems>2</preloaditems>
 				<scrolltime tween="quadratic">400</scrolltime>
 				<focusposition>1</focusposition>
-				<visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher)</visible>
+                <visible>String.Contains(Container.FolderPath,plugin.program.advanced.launcher) | Window.IsActive(games) | Container.Content(games)</visible>
 				<itemlayout width="315" height="750" condition="!Skin.HasSetting(Enable.Shift.Small)">
 					<include>ShiftPosterThumbs</include>
 				</itemlayout>

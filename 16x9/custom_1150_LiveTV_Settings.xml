@@ -165,6 +165,43 @@
 					<selected>Skin.HasSetting(Disable.PVRSearch)</selected>
 					<width>963</width>
 				</control>
+                
+                <!--PVR THUMBS and other fanart -->
+                <control type="label"  id="99202">
+                    <width>963</width>
+                    <height>60</height>
+                    <textoffsetx>15</textoffsetx>
+                    <font>font13_title</font>
+                    <label>PVR FanArt Settings</label>
+                    <textcolor>$VAR[ThemeLabelColor]</textcolor>
+                    <aligny>center</aligny>
+                </control>
+                <!--<control type="radiobutton" id="9237">
+                    <width>963</width>
+                    <label>Override PVR ChannelLogo</label>
+                    <selected>Skin.HasSetting(SkinHelper.OverridePVRChannelLogo)</selected>
+                    <onclick>Skin.ToggleSetting(SkinHelper.OverridePVRChannelLogo)</onclick>
+                </control>-->
+                <control type="radiobutton" id="9235">
+                    <width>963</width>
+                    <label>Enable PVR FanartBackground</label>
+                    <selected>Skin.HasSetting(SkinHelper.EnablePVRFanartBG)</selected>
+                    <onclick>Skin.ToggleSetting(SkinHelper.EnablePVRFanartBG)</onclick>
+                </control>
+                <!--<control type="radiobutton" id="9236">
+                    <width>963</width>
+                    <label>Enable PVR Clearart (can be slow!)</label>
+                    <selected>Skin.HasSetting(SkinHelper.EnablePVRClearart)</selected>
+                    <onclick>Skin.ToggleSetting(SkinHelper.EnablePVRClearart)</onclick>
+                </control>-->
+                
+                <control type="radiobutton" id="9237">
+                    <width>963</width>
+                    <label>enable differet PVR Info</label>
+                    <selected>Skin.HasSetting(EnabledNewPVRInfo)</selected>
+                    <onclick>Skin.ToggleSetting(EnabledNewPVRInfo)</onclick>
+                </control>
+                
 			</control>
 		</control>
 	</controls>

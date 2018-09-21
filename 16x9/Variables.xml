@@ -311,6 +311,7 @@
 	<variable name="PlayerPosterVar">
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(season.poster))">$INFO[Player.Art(season.poster)]</value>
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.Poster))">$INFO[Window(Home).Property(SkinHelper.Player.Art.Poster)]</value>
 		<value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
 	</variable>
 	<variable name="GenreIconVar">
@@ -638,15 +639,10 @@
 		<value>$INFO[ListItem.Label2]</value>
 	</variable>
 	<variable name="RightListSubLabelVar">
-		<value condition="ListItem.IsParentFolder" />
-		<value condition="Skin.HasSetting(KarellenSublabelMovies) + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.LastPlayed,$LOCALIZE[568] , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
-		<value condition="Skin.HasSetting(KarellenSublabelMovies) + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.LastPlayed,$LOCALIZE[568] , • ]$VAR[ItemDurationVar]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
-		<value condition="Skin.HasSetting(KarellenSublabelMovies) + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.LastPlayed,$LOCALIZE[568] , • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
-		<value condition="Skin.HasSetting(KarellenSublabelMovies) + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.LastPlayed,$LOCALIZE[568] , • ]$VAR[ItemDurationVar]$INFO[ListItem.PlayCount, • $LOCALIZE[31488]: ,][/COLOR]</value>
-		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
-		<value condition="Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
-		<value condition="!Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
-		<value condition="Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="!ListItem.IsParentFolder + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="!ListItem.IsParentFolder + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + !Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="!ListItem.IsParentFolder + !Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.Duration(mins),, $LOCALIZE[12391]]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
+		<value condition="!ListItem.IsParentFolder + Skin.HasSetting(Enable.HourMinuteDuration) + [Container.Content(movies) + Skin.HasSetting(rightlistalternate)]">[COLOR white]$INFO[ListItem.Year,, • ]$INFO[ListItem.RatingAndVotes,, • ]$VAR[ItemDurationVar]$INFO[ListItem.EndTimeResume, • $LOCALIZE[31393]: ,][/COLOR]</value>
 		<value condition="[Container.Content(tvshows) + !Skin.HasSetting(rightlistalternatetv)]">$INFO[ListItem.RatingAndVotes]</value>
 		<value condition="[Container.Content(tvshows) + Skin.HasSetting(rightlistalternatetv)]">$INFO[ListItem.Year]$INFO[ListItem.RatingAndVotes, • ,]</value>
 		<value condition="Container.Content(episodes)">$INFO[ListItem.RatingAndVotes,, • ]$INFO[ListItem.EndTimeResume,$LOCALIZE[31393]: ,]</value>
@@ -899,8 +895,8 @@
 		<value condition="String.Contains(ListItem.MPAA,Brazil:14) | String.Contains(ListItem.MPAA,14 anos)">MPAA_Brazil_14.png</value>
 		<value condition="String.Contains(ListItem.MPAA,Brazil:16) | String.Contains(ListItem.MPAA,16 anos)">MPAA_Brazil_16.png</value>
 		<value condition="String.Contains(ListItem.MPAA,Brazil:18) | String.Contains(ListItem.MPAA,18 anos)">MPAA_Brazil_18.png</value>
-		<value condition="String.Contains(ListItem.MPAA,Australia:R) | String.Contains(ListItem.MPAA,Australia:R18+)">australia_R.png</value>
-		<value condition="String.Contains(ListItem.MPAA,Australia:MA) | String.Contains(ListItem.MPAA,Australia:MA15+)">australia_MA.png</value>
+		<!--<value condition="String.Contains(ListItem.MPAA,Australia:R) | String.Contains(ListItem.MPAA,Australia:R18+)">australia_R.png</value>
+		<value condition="String.Contains(ListItem.MPAA,Australia:MA) | String.Contains(ListItem.MPAA,Australia:MA15+)">australia_MA.png</value>-->
 		<value condition="String.Contains(ListItem.MPAA,Australia:M)">australia_M.png</value>
 		<value condition="String.Contains(ListItem.MPAA,Australia:PG)">australia_PG.png</value>
 		<value condition="String.Contains(ListItem.MPAA,Australia:G)">australia_G.png</value>
@@ -1037,7 +1033,11 @@
 	<variable name="HomeNowPlayingThumbVar">
 		<value condition="[VideoPlayer.Content(movies) | VideoPlayer.Content(musicvideos)] + !String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
 		<value condition="VideoPlayer.Content(episodes) + !String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
-		<value condition="VideoPlayer.Content(livetv) + !String.IsEmpty(VideoPlayer.Cover)">$INFO[VideoPlayer.Cover]</value>
+        
+        
+        <value condition="[VideoPlayer.Content(livetv) | PVR.IsPlayingRecording] + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.Poster))">$INFO[Window(Home).Property(SkinHelper.Player.Art.Poster)]</value>
+        
+        <value condition="[VideoPlayer.Content(livetv) | PVR.IsPlayingRecording] + !String.IsEmpty(VideoPlayer.Cover)">$INFO[VideoPlayer.Cover]</value>
 		<value>$INFO[Player.Art(thumb)]</value>
 	</variable>
 	<!-- DialogInfos -->
@@ -1244,6 +1244,16 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),FullscreenWall) + !String.IsEmpty(Skin.String(609.NoTopBar))">$INFO[Skin.String(609.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + !String.IsEmpty(Skin.String(506.NoTopBar))">$INFO[Skin.String(506.NoTopBar)]</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + !String.IsEmpty(Skin.String(509.NoTopBar))">$INFO[Skin.String(509.NoTopBar)]</value>
+        <!-- ########################################################## -->
+        <!-- ########################################################## -->
+        <!-- ########################################################## -->
+        <!-- new: GameFlix -->
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixPoster) + !String.IsEmpty(Skin.String(801.NoTopBar))">$INFO[Skin.String(801.NoTopBar)]</value>
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixWide) + !String.IsEmpty(Skin.String(802.NoTopBar))">$INFO[Skin.String(802.NoTopBar)]</value>
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixSquare) + !String.IsEmpty(Skin.String(803.NoTopBar))">$INFO[Skin.String(803.NoTopBar)]</value>
+        <!-- ########################################################## -->
+        <!-- ########################################################## -->
+        <!-- ########################################################## -->
 		<value>$LOCALIZE[16041]</value>
 	</variable>
 	<variable name="NoTopBarOnClickVar">
@@ -1299,6 +1309,19 @@
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),RightList) + !String.IsEmpty(Skin.String(506.NoTopBar))">Skin.Reset(506.NoTopBar)</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + String.IsEmpty(Skin.String(509.NoTopBar))">Skin.SetString(509.NoTopBar,$LOCALIZE[351])</value>
 		<value condition="String.IsEqual(Window(Home).Property(actualViewtype),MyFlix) + !String.IsEmpty(Skin.String(509.NoTopBar))">Skin.Reset(509.NoTopBar)</value>
+        <!-- ########################################################## -->
+        <!-- ########################################################## -->
+        <!-- ########################################################## -->
+        <!-- new: GameFlix -->
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixPoster) + String.IsEmpty(Skin.String(801.NoTopBar))">Skin.SetString(801.NoTopBar,$LOCALIZE[351])</value>
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixPoster) + !String.IsEmpty(Skin.String(801.NoTopBar))">Skin.Reset(801.NoTopBar)</value>
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixWide) + String.IsEmpty(Skin.String(802.NoTopBar))">Skin.SetString(802.NoTopBar,$LOCALIZE[351])</value>
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixWide) + !String.IsEmpty(Skin.String(802.NoTopBar))">Skin.Reset(802.NoTopBar)</value>
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixSquare) + String.IsEmpty(Skin.String(803.NoTopBar))">Skin.SetString(803.NoTopBar,$LOCALIZE[351])</value>
+        <value condition="String.IsEqual(Window(Home).Property(actualViewtype),GameFlixSquare) + !String.IsEmpty(Skin.String(803.NoTopBar))">Skin.Reset(803.NoTopBar)</value>
+        <!-- ########################################################## -->
+        <!-- ########################################################## -->
+        <!-- ########################################################## -->
 	</variable>
 	<variable name="TriPanelLayoutLabelVar">
 		<value condition="!String.IsEmpty(Skin.String(TriPanelLayout))">$INFO[Skin.String(TriPanelLayout)]</value>
@@ -1473,27 +1496,19 @@
 		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),01)">$LOCALIZE[12311] $LOCALIZE[31182]</value>
 		<value>$INFO[Player.TimeRemaining(ss),, $LOCALIZE[31184]]</value>
 	</variable>
-	<variable name="PlayerTimeRemainingAltVar">
-		<value condition="Integer.IsGreater(Player.TimeRemaining(h),0) + Integer.IsGreater(Player.TimeRemaining(mm),10)">$INFO[Player.TimeRemaining(h),,h]$INFO[Player.TimeRemaining(mm),,m]</value>
-		<value condition="Integer.IsLessOrEqual(Player.TimeRemaining(h),0) + Integer.IsGreater(Player.TimeRemaining(mm),10)">$INFO[Player.TimeRemaining(mm),,m]</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),09)">$LOCALIZE[12319]m</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),08)">$LOCALIZE[12318]m</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),07)">$LOCALIZE[12317]m</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),06)">$LOCALIZE[12316]m</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),05)">$LOCALIZE[12315]m</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),04)">$LOCALIZE[12314]m</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),03)">$LOCALIZE[12313]m</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),02)">$LOCALIZE[12312]m</value>
-		<value condition="Integer.IsEqual(Player.TimeRemaining(mm),01)">$LOCALIZE[12311]m</value>
-		<value>$INFO[Player.TimeRemaining(ss)]s</value>
-	</variable>
-	<variable name="ItemDurationVar">
-		<value condition="Integer.IsEqual(ListItem.Duration(mins),60) | Integer.IsEqual(ListItem.Duration(mins),120) | Integer.IsEqual(ListItem.Duration(mins),180) | Integer.IsEqual(ListItem.Duration(mins),240) | Integer.IsEqual(ListItem.Duration(mins),300) | Integer.IsEqual(ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420)">$INFO[ListItem.Duration(hours),,h]</value>
-		<value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(m),,m]</value>
-		<value condition="Integer.IsLess(ListItem.Duration(mins),1)">$INFO[ListItem.Duration(ss),,$LOCALIZE[31090]]</value>
-		<value>$INFO[ListItem.Duration(h),,h]$INFO[ListItem.Duration(m),,m]</value>
-	</variable>
-	<variable name="CinemaVisionButtonLabelVar">
+    <variable name="PlayerTimeRemainingAltVar">
+        <value condition="Integer.IsGreater(PVR.EpgEventRemainingTime(mins),60)">$INFO[PVR.EpgEventRemainingTime(h),,h]$INFO[PVR.EpgEventRemainingTime(m),,m]</value>
+        <value condition="Integer.IsLess(PVR.EpgEventRemainingTime(m),1)">$INFO[PVR.EpgEventRemainingTime(ss)]s</value>
+        <value>$INFO[PVR.EpgEventRemainingTime(mins),,m]</value>
+    </variable>
+    
+    <variable name="ItemDurationVar">
+        <value condition="Integer.IsEqual(ListItem.Duration(mins),60) | Integer.IsEqual(ListItem.Duration(mins),120) | Integer.IsEqual(ListItem.Duration(mins),180) | Integer.IsEqual(ListItem.Duration(mins),240) | Integer.IsEqual(ListItem.Duration(mins),300) | Integer.IsEqual(ListItem.Duration(mins),360) | Integer.IsEqual(ListItem.Duration(mins),420)">$INFO[ListItem.Duration(hours),,h]</value>
+        <value condition="Integer.IsLess(ListItem.Duration(mins),60)">$INFO[ListItem.Duration(m),,m]</value>
+        <value>$INFO[ListItem.Duration(h),,h]$INFO[ListItem.Duration(m),,m]</value>
+    </variable>
+
+    <variable name="CinemaVisionButtonLabelVar">
 		<value condition="!String.IsEmpty(Skin.String(CinemaVision.Button))">$INFO[Skin.String(CinemaVision.Button)]</value>
 		<value>$LOCALIZE[571]</value>
 	</variable>
