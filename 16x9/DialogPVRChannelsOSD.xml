@@ -173,6 +173,16 @@
 						<width>160</width>
 						<aspectratio>keep</aspectratio>
 						<texture>$INFO[Container(11).ListItem.Icon]</texture>
+						<visible>String.IsEmpty(Container(11).Listitem.EpgEventIcon)</visible>
+					</control>
+					<control type="image">
+						<top>80</top>
+						<left>5</left>
+						<height>100</height>
+						<width>160</width>
+						<aspectratio>keep</aspectratio>
+						<texture>$INFO[Container(11).Listitem.EpgEventIcon]</texture>
+						<visible>!String.IsEmpty(Container(11).Listitem.EpgEventIcon)</visible>
 					</control>
 					<control type="group">
 						<top>100</top>

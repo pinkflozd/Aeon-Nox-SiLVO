@@ -29,7 +29,7 @@
 				<height>904</height>
 				<texture border="40">listpanel_back.png</texture>
 			</control>
-            
+
             <!-- Disabled for new view -->
 <!--			<control type="list" id="50">
 				<top>180</top>
@@ -150,7 +150,7 @@
                         <width>105</width>
                         <height>112</height>
                         <aspectratio>keep</aspectratio>
-                        <texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.ActualIcon]</texture>
+                        <texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.Icon]</texture>
                         <visible>!Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
                     </control>
                     <control type="image">
@@ -159,7 +159,7 @@
                         <width>170</width>
                         <height>112</height>
                         <aspectratio>keep</aspectratio>
-                        <texture background="true">http://localhost:52307/getpvrthumb&amp;fallback=$ESCINFO[ListItem.ActualIcon]&amp;title=$ESCINFO[ListItem.Label]&amp;type=landscape</texture>
+                        <texture background="true">http://localhost:52307/getpvrthumb&amp;fallback=$ESCINFO[ListItem.Icon]&amp;title=$ESCINFO[ListItem.Label]&amp;type=landscape</texture>
                         <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
                     </control>
                     <!-- Label or Episodename -->
@@ -249,7 +249,7 @@
                         <width>105</width>
                         <height>112</height>
                         <aspectratio>keep</aspectratio>
-                        <texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.ActualIcon]</texture>
+                        <texture background="true" fallback="views/list/DefaultVideo.png">$INFO[ListItem.Icon]</texture>
                         <visible>!System.HasAddon(script.skin.helper.service) | !Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
                     </control>
                     <control type="image">
@@ -258,7 +258,7 @@
                         <width>170</width>
                         <height>112</height>
                         <aspectratio>keep</aspectratio>
-                        <texture background="true">http://localhost:52307/getpvrthumb&amp;fallback=$ESCINFO[ListItem.ActualIcon]&amp;title=$ESCINFO[ListItem.Label]&amp;type=landscape</texture>
+                        <texture background="true">http://localhost:52307/getpvrthumb&amp;fallback=$ESCINFO[ListItem.Icon]&amp;title=$ESCINFO[ListItem.Label]&amp;type=landscape</texture>
                         <visible>Skin.HasSetting(SkinHelper.EnablePVRThumbs)</visible>
                     </control>
                     <!-- Label or Episodename -->
@@ -328,7 +328,7 @@
                     </control>
                 </focusedlayout>
             </control>
-            
+
             <!-- Right Side - Single Recordings Group - 2 Boxes -->
 			<control type="group">
 				<visible>!ListItem.IsFolder</visible>
@@ -422,14 +422,14 @@
 							<font>font24_title</font>
 							<label>[B]$INFO[Container(50).ListItem.Title][/B]</label>
 						</control>
-                        
+
                         <control type="label">
                             <width>700</width>
                             <height>40</height>
                             <label>[COLOR $VAR[ThemeLabelColor]]$VAR[PVRSeasonAndEpisodeVar,, - ]$VAR[PVREpisodenameOrPlotOutlineVar][/COLOR]</label>
                             <font>font24</font>
                         </control>
-                        
+
 						<control type="label">
 							<width>700</width>
 							<height>34</height>
