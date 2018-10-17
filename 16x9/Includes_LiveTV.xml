@@ -214,7 +214,7 @@
 						<font>font16</font>
 						<align>right</align>
 						<label>[COLOR white2]+$VAR[PlayerTimeRemainingAltVar][/COLOR]</label>
-						<visible>!String.IsEmpty(PVR.EpgEventRemainingTime)</visible>
+						<visible>!String.IsEmpty(PVR.EpgEventRemainingTime) + !PVR.IsTimeshift</visible>
 					</control>
 					<control type="label">
 						<left>1288</left>
