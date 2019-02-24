@@ -3023,49 +3023,109 @@
 				<control type="group">
 					<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
 					<control type="textbox">
+						<width>1350</width>
+						<height>174</height>
+						<label>$INFO[VideoPlayer.PlotOutline]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Pvr.EPGEventIcon)</visible>
+					</control>
+					<control type="textbox">
+						<width>1350</width>
+						<height>774</height>
+						<label>$INFO[VideoPlayer.Plot]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(Pvr.EPGEventIcon)</visible>
+					</control>
+					<control type="textbox">
+						<width>1350</width>
+						<height>50</height>
+						<label>$INFO[VideoPlayer.Plot]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(Pvr.EPGEventIcon)</visible>
+					</control>
+					<control type="textbox">
 						<width>1805</width>
 						<height>174</height>
 						<label>$INFO[VideoPlayer.PlotOutline]</label>
 						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
-						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline)</visible>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline) + String.IsEmpty(Pvr.EPGEventIcon)</visible>
 					</control>
 					<control type="textbox">
 						<width>1805</width>
 						<height>774</height>
 						<label>$INFO[VideoPlayer.Plot]</label>
 						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
-						<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+						<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + String.IsEmpty(Pvr.EPGEventIcon)</visible>
 					</control>
 					<control type="textbox">
 						<width>1805</width>
 						<height>50</height>
 						<label>$INFO[VideoPlayer.Plot]</label>
 						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
-						<visible>String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+						<visible>String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + String.IsEmpty(Pvr.EPGEventIcon)</visible>
+					</control>
+					<control type="image">
+						<left>1450</left>
+						<width>400</width>
+						<height>400</height>
+						<aspectratio>keep</aspectratio>
+						<label>$INFO[Pvr.EPGEventIcon]</label>
+						<texture background="true">$INFO[Pvr.EPGEventIcon]</texture>
+						<visible>!String.IsEmpty(Pvr.EPGEventIcon)</visible>
 					</control>
 				</control>
 				<control type="group">
 					<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVNext))</visible>
 					<control type="textbox">
+						<width>1350</width>
+						<height>174</height>
+						<label>$INFO[VideoPlayer.NextPlotOutline]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Container(11).ListItem.EPGEventIcon)</visible>
+					</control>
+					<control type="textbox">
+						<width>1350</width>
+						<height>774</height>
+						<label>$INFO[VideoPlayer.NextPlot]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(Container(11).ListItem.EPGEventIcon)</visible>
+					</control>
+					<control type="textbox">
+						<width>1350</width>
+						<height>50</height>
+						<label>$INFO[VideoPlayer.NextPlot]</label>
+						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
+						<visible>String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(Container(11).ListItem.EPGEventIcon)</visible>
+					</control>
+					<control type="textbox">
 						<width>1805</width>
 						<height>174</height>
 						<label>$INFO[VideoPlayer.NextPlotOutline]</label>
 						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
-						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline)</visible>
+						<visible>!String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + !String.IsEmpty(VideoPlayer.PlotOutline) + String.IsEmpty(Container(11).ListItem.EPGEventIcon)</visible>
 					</control>
 					<control type="textbox">
 						<width>1805</width>
 						<height>774</height>
 						<label>$INFO[VideoPlayer.NextPlot]</label>
 						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
-						<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+						<visible>String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + String.IsEmpty(Container(11).ListItem.EPGEventIcon)</visible>
 					</control>
 					<control type="textbox">
 						<width>1805</width>
 						<height>50</height>
 						<label>$INFO[VideoPlayer.NextPlot]</label>
 						<autoscroll delay="6000" time="3000" repeat="6000">true</autoscroll>
-						<visible>String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot))</visible>
+						<visible>String.IsEmpty(VideoPlayer.PlotOutline) + !String.IsEmpty(Window(fullscreeninfo).Property(LiveTVFullPlot)) + String.IsEmpty(Container(11).ListItem.EPGEventIcon)</visible>
+					</control>
+					<control type="image">
+						<left>1450</left>
+						<width>400</width>
+						<height>400</height>
+						<aspectratio>keep</aspectratio>
+						<label>$INFO[Container(11).ListItem.EPGEventIcon]</label>
+						<texture background="true">$INFO[Container(11).ListItem.EPGEventIcon]</texture>
+						<visible>!String.IsEmpty(Container(11).ListItem.EPGEventIcon)</visible>
 					</control>
 				</control>
 			</control>
